@@ -55,8 +55,8 @@ header
 		width: 74px;
 }
 #menu a {   
-		background: url('/cerex/backend/admin/img/toolbar_btn.png') no-repeat top left;
-		background-image: url('/cerex/backend/admin/img/toolbar_btn.png');
+		background: url('/cerexserver/backend/admin/img/toolbar_btn.png') no-repeat top left;
+		background-image: url('/cerexserver/backend/admin/img/toolbar_btn.png');
 		background-position-x: 0%;
 		background-position-y: 0%;
 		background-size: initial;
