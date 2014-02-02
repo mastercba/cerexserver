@@ -3,6 +3,6 @@
 	session_start();
 	session_destroy();
 
-	echo '<meta http-equiv="REFRESH" content="0,url=/cerex/formlogin.html">';  //......ok!
+	echo '<meta http-equiv="REFRESH" content="0,url=/cerexserver/formlogin.html">';  //......ok!
 
 ?>
