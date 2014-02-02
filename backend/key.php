@@ -10,10 +10,10 @@
     // At the top of the page we check to see whether the user 
     if(empty($_SESSION['usuario'])){ //is logged in or not 
         // If they are not, we redirect them to the login page. 
-        header("Location: /cerex/formlogin.html");          
+        header("Location: /cerexserver/formlogin.html");          
         // Remember that this die statement is absolutely critical.  Without it, 
         // people can view your members-only content without logging in. 
-        die("Redirecting to /cerex/formlogin.html"); 
+        die("Redirecting to /cerexserver/formlogin.html"); 
     }     
     // Everything below this point in the file is secured by the login system     
 
@@ -95,28 +95,28 @@
         
             if($row['superadm_tipo'] == 1){
                 // superadm!. 
-                header("Location: /cerex/backend/admin/admin.php"); 
-                die("Redirecting to: /cerex/backend/admin/admin.php"); 
+                header("Location: /cerexserver/backend/admin/admin.php"); 
+                die("Redirecting to: /cerexserver/backend/admin/admin.php"); 
             }else{}
             if($row['adm_tipo'] == 1){
                 // adm!. 
-                header("Location: /cerex/backend/admin/admin1.php"); 
-                die("Redirecting to: /cerex/backend/admin/admin1.php"); 
+                header("Location: /cerexserver/backend/admin/admin1.php"); 
+                die("Redirecting to: /cerexserver/backend/admin/admin1.php"); 
             }else{}
             if($row['teacher_tipo'] == 1){
                 // tacher!. 
-                header("Location: /cerex/backend/teacher/overview.php"); 
-                die("Redirecting to: /cerex/backend/teacher/overview.php"); 
+                header("Location: /cerexserver/backend/teacher/overview.php"); 
+                die("Redirecting to: /cerexserver/backend/teacher/overview.php"); 
             }else{}
             if($row['student_tipo'] == 1){
                 // student!. 
-                header("Location: /cerex/backend/student/home.php"); 
-                die("Redirecting to: /cerex/backend/student/home.php"); 
+                header("Location: /cerexserver/backend/student/home.php"); 
+                die("Redirecting to: /cerexserver/backend/student/home.php"); 
             }else{}
 
         //no encontro que es.....
-            header("Location: /cerex/formlogin.html"); 
-            die("Redirecting to: /cerex/formlogin.html");
+            header("Location: /cerexserver/formlogin.html"); 
+            die("Redirecting to: /cerexserver/formlogin.html");
 
 
 
