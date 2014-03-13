@@ -27,31 +27,10 @@
     $_SESSION['FilterStudent'] = 0;
     $_SESSION['mesfilter'] = 0;
 
-                    $_SESSION['sid']= " ";
-                    $_SESSION['susuario']= " ";
-                    $_SESSION['spassword']= " ";
-                    $_SESSION['snombre']= " ";
-                    $_SESSION['sapellido']= " ";
-                    $_SESSION['sbirth']= " ";
-                    $_SESSION['sgender']= " ";           
-                    $_SESSION['shtown']= " ";
-                    $_SESSION['saddr']= " ";
-                    $_SESSION['snlang']= " ";
-                    $_SESSION['scity']= " ";
-                    $_SESSION['stzone']= " ";
-                    $_SESSION['sawork']= " ";
-                    $_SESSION['stelefono']= " ";
-                    $_SESSION['scelular']= " ";
-                    $_SESSION['semail']= " ";
-                    $_SESSION['sskype']= " ";
-                    $_SESSION['scountry']= " ";          
-                    $_SESSION['scode']= " ";
-                    $_SESSION['sposition']= " ";    //student position
-                    $_SESSION['sasig']= " ";
-
         //$fecha_actual = date("d/m/Y");
         //$str = '4/11/2012';
         $str_hoy = date("d/m/Y");
+        //$time = 
         $fecha_hoy = (explode('/', $str_hoy, 3));
         //valido dia
         $dia_hoy = $fecha_hoy[0];
@@ -94,6 +73,14 @@
     //quien es? : superadm? admin? or teacher?        
         
             if($row['superadm_tipo'] == 1){
+
+                // user's IP address!.                  
+                $ip = getenv("REMOTE_ADDR");
+                $ip1 = $_SERVER["REMOTE_ADDR"];
+                // and save it to visitas db-table
+                $result = mysql_query(("INSERT INTO visitas (ip, fecha)
+                VALUES('$ip1','$str_hoy')"), $conexion);
+
                 // superadm!. 
                 header("Location: /cerexserver/backend/admin/admin.php"); 
                 die("Redirecting to: /cerexserver/backend/admin/admin.php"); 

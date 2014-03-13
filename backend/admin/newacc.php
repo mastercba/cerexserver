@@ -24,14 +24,15 @@
 		$addfecha = $_POST['accfecha'];
 		$adddetalle = $_POST['accdetalle'];
 		
+		$addcuenta = $_POST['acccuenta'];
 		$addingresos = $_POST['accingresos'];
 		$addegresos = $_POST['accegresos'];
 		$addsaldo = $_POST['accsaldo'];		
 		
 		
  
-		$result = mysql_query(("INSERT INTO account (created_at, descripcion, ingreso, egreso, saldo)
-		 VALUES('$addfecha','$adddetalle','$addingresos','$addegresos','$addsaldo')"), $conexion);
+		$result = mysql_query(("INSERT INTO account (created_at, descripcion, ingreso, egreso, saldo, cuenta)
+		 VALUES('$addfecha','$adddetalle','$addingresos','$addegresos','$addsaldo','$addcuenta')"), $conexion);
 
 		echo '<meta HTTP-EQUIV="REFRESH" content="0; url=account.php">';
 

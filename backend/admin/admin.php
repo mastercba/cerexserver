@@ -46,7 +46,7 @@
 	</div>
 	<div id="logo"><!--<logo>-->
 		<a style="text-decoration: none; margin-left: 12px;" href="http://www.fluentspeaking.com" title="FluentSpeaking">
-		    <img style="margin-top: 2px;" height="39" src="/cerexserver/backend/admin/img/logo_last.png" alt="Fluent Speaking" />
+		    <img style="margin-top: 2px;" height="39" src="/cerexserver/backend/admin/img/logo.png" alt="Fluent Speaking" />
 		</a>
 	</div>
 	<br />

@@ -1,7 +1,7 @@
 <?php 
 
     // These variables define the connection information for your MySQL database 
-    $username = "dbo469629526";  //dbusername
+    $username = "quantid0_dbo4696";  //dbusername
     $password = "~marco123"; //dbpassword
     $host = "localhost"; 
     $dbname = "quantid0_cerex"; //dbname

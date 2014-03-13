@@ -11,7 +11,15 @@
 			"file": "formlogin.html",
 			"settings":
 			{
-				"buffer_size": 1752,
+				"buffer_size": 1747,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/config.php",
+			"settings":
+			{
+				"buffer_size": 5038,
 				"line_ending": "Windows"
 			}
 		},
@@ -20,6 +28,78 @@
 			"settings":
 			{
 				"buffer_size": 4895,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/key.php",
+			"settings":
+			{
+				"buffer_size": 6217,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Mark/Desktop/bf109e4_a-sheets.zip",
+			"settings":
+			{
+				"buffer_size": 3266817,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "backend/logout.php",
+			"settings":
+			{
+				"buffer_size": 144,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "backend/admin/admin.php",
+			"settings":
+			{
+				"buffer_size": 3532,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/admin/account.php",
+			"settings":
+			{
+				"buffer_size": 4476,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/admin/editacc.php",
+			"settings":
+			{
+				"buffer_size": 4261,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/admin/eliminaracc.php",
+			"settings":
+			{
+				"buffer_size": 843,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/admin/newacc.php",
+			"settings":
+			{
+				"buffer_size": 1185,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/admin/saveacc.php",
+			"settings":
+			{
+				"buffer_size": 1182,
 				"line_ending": "Windows"
 			}
 		}
@@ -72,6 +152,25 @@
 	},
 	"file_history":
 	[
+		"/D/BIBLIOTEKA/htdocs/fluent_copia de la ultima version/backend/admin/admin.php",
+		"/C/xampp/htdocs/cerexserver/borrador.php",
+		"/C/Users/Mark/Desktop/CustomizedListView/CustomizedListView/src/com/example/androidhive/CustomizedListView.java",
+		"/C/Users/Mark/Desktop/CustomizedListView/CustomizedListView/src/com/example/androidhive/XMLParser.java",
+		"/C/Users/Mark/Desktop/CustomizedListView/CustomizedListView/src/com/example/androidhive/FileCache.java",
+		"/C/Users/Mark/Desktop/CustomizedListView/CustomizedListView/src/com/example/androidhive/Utils.java",
+		"/C/Users/Mark/Desktop/CustomizedListView/CustomizedListView/src/com/example/androidhive/MemoryCache.java",
+		"/C/Users/Mark/Desktop/CustomizedListView/CustomizedListView/src/com/example/androidhive/ImageLoader.java",
+		"/C/Users/Mark/Desktop/CustomizedListView/CustomizedListView/src/com/example/androidhive/LazyAdapter.java",
+		"/C/Users/Mark/Desktop/CustomizedListView/CustomizedListView/res/values/strings.xml",
+		"/C/Users/Mark/Desktop/NavigationDrawer/NavigationDrawer/src/com/example/android/navigationdrawerexample/MainActivity.java",
+		"/C/Users/Mark/Desktop/NavigationDrawer/NavigationDrawer/res/values/strings.xml",
+		"/C/Users/Mark/Desktop/NavigationDrawer/NavigationDrawer/res/menu/main.xml",
+		"/C/Users/Mark/Desktop/NavigationDrawer/NavigationDrawer/res/layout/fragment_planet.xml",
+		"/C/Users/Mark/Desktop/NavigationDrawer/NavigationDrawer/AndroidManifest.xml",
+		"/C/Users/Mark/Desktop/NavigationDrawer/NavigationDrawer/res/layout/drawer_list_item.xml",
+		"/C/Users/Mark/Desktop/NavigationDrawer/NavigationDrawer/res/layout/activity_main.xml",
+		"/C/xampp/htdocs/cerexserver/backend/admin/css/estilos_adm.css",
+		"/C/xampp/htdocs/cerexserver/backend/login.php",
 		"/C/Users/Mark/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Mark/AppData/Roaming/Sublime Text 3/Packages/User/Git.sublime-settings",
 		"/C/Users/Mark/AppData/Roaming/Sublime Text 3/Packages/Git/Git.sublime-settings",
@@ -114,7 +213,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -123,15 +222,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1752,
+						"buffer_size": 1747,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								551,
-								551
+								880,
+								880
 							]
 						],
 						"settings":
@@ -147,8 +246,37 @@
 				},
 				{
 					"buffer": 1,
+					"file": "backend/config.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5038,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								107,
+								123
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "backend/login.php",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 4895,
@@ -169,7 +297,257 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+						"translation.y": 1017.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "backend/key.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6217,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								979,
+								979
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Mark/Desktop/bf109e4_a-sheets.zip",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3266817,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "backend/logout.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8,
+								8
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "backend/admin/admin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3532,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1895,
+								1895
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 675.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "backend/admin/account.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4476,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1894,
+								1894
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 79.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "backend/admin/editacc.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4261,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								643,
+								643
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "backend/admin/eliminaracc.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 843,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								562,
+								562
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "backend/admin/newacc.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1185,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								705,
+								705
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "backend/admin/saveacc.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1182,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								860,
+								860
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 79.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

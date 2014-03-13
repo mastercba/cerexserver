@@ -46,7 +46,7 @@
 	</div>
 	<div id="logo"><!--<logo>-->
 		<a style="text-decoration: none; margin-left: 12px;" href="http://www.fluentspeaking.com" title="FluentSpeaking">
-		    <img style="margin-top: 2px;" height="39" src="/cerexserver/backend/admin/img/logo_last.png" alt="Fluent Speaking" />
+		    <img style="margin-top: 2px;" height="39" src="/cerexserver/backend/admin/img/logo.png" alt="Fluent Speaking" />
 		</a>
 	</div>
 	<br />
@@ -66,6 +66,7 @@
 						<td><strong>Date & Time</strong></td>
 						<td align=left><strong>Description</strong></td>
 						
+						<td><strong>Cuenta</strong></td>
 						<td><strong>Income</strong></td>
 						<td><strong>Expense</strong></td>
 						<td><strong>Balance</strong></td>
@@ -83,10 +84,11 @@
 				    $accingresos = $row['ingreso'];
 				    $accegresos = $row['egreso'];
 				    $accsaldo = $row['saldo'];
+				    $acccuenta = $row['cuenta'];
 
 
 			echo"<tr align=center><td>".$accid."</td><td>".$accfecha."</td>
-			<td align=left>".$accdetalle."</td>
+			<td align=left>".$accdetalle."</td><td align=center>".$acccuenta."</td>
 			<td align=right>".$accingresos."</td><td align=right>".$accegresos."</td>
 			<td align=right>".$accsaldo."</td>
 
@@ -102,7 +104,14 @@
 					<td></td>
 					<td><input type='date' name='accfecha' value='' size=8></td>
 					<td  align=left><input type='text' name='accdetalle' value='' size=45></td>
-					
+
+					<td><select name=acccuenta>
+						<option>select</option>
+	    				<option>4000-Prestamos</option>
+	    				<option>4000-Prestamos</option>
+	    				<option>4000-Prestamos</option>
+    			    	</select></td>
+
 					<td align=right><input type='text' name='accingresos' value='' size=7></td>
 					<td align=right><input type='text' name='accegresos' value='' size=7></td>
 					<td align=right><input type='text' name='accsaldo' value='' size=7></td>

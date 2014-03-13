@@ -21,6 +21,7 @@
 	$accfecha = $_POST['nfecha'];
 	$accdetalle = $_POST['ndetalle'];
 
+	$acccuenta = $_POST['ncuenta'];
 	$accingresos = $_POST['ningresos'];
 	$accegresos = $_POST['negresos'];
 	$accsaldo = $_POST['nsaldo'];
@@ -31,6 +32,8 @@
 
 		mysql_query("UPDATE account SET created_at='".$accfecha."', 
 		descripcion='".$accdetalle."', 
+
+		cuenta='".$acccuenta."',
 		ingreso='".$accingresos."', egreso='".$accegresos."', 
 		saldo='".$accsaldo."'
 		WHERE id=".$accidantiguo."");

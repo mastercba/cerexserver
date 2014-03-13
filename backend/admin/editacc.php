@@ -68,6 +68,7 @@
 						<td><strong>Date & Time</strong></td>
 						<td align=left><strong>Description</strong></td>
 						
+						<td><strong>Cuenta</strong></td>
 						<td><strong>Income</strong></td>
 						<td><strong>Expense</strong></td>
 						<td><strong>Balance</strong></td>
@@ -87,6 +88,13 @@
 				<td>".$accid."</td>
 				<td><input type='text' name='nfecha' value='".$row['created_at']."' size=8></td>
 				<td align=left><input type='text' name='ndetalle' value='".$row['descripcion']."' size=45></td>
+
+				<td><select name=ncuenta>
+					<option>select</option>
+	    			<option>4000-Prestamos</option>
+	    			<option>4000-Prestamos</option>
+	    			<option>4000-Prestamos</option>
+    			  	</select></td>
 
 				<td><input type='text' name='ningresos' value='".$row['ingreso']."' size=7></td>
 				<td><input type='text' name='negresos' value='".$row['egreso']."' size=7></td>
