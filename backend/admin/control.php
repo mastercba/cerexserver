@@ -17,9 +17,9 @@
     }     
     // Everything below this point in the file is secured by the login system
 
-    // update 'lastvisit' date de la db
-  
+    // update 'lastvisit' date de la db 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,49 +51,17 @@
 	</div>
 	<br />
 	<ul class="tabrow"><!--- Tabs Menu -->
-		<li class="selected"><a href="/cerexserver/backend/admin/admin.php">WEBPAGE</a></li>
+		<li><a href="/cerexserver/backend/admin/admin.php">WEBPAGE</a></li>
 		<li><a href="/cerexserver/backend/admin/account.php">ACCOUNTING</a></li>
-		<li><a href="/cerexserver/backend/admin/production.php">PRODUCTION</a></li>
-		<li><a href="/cerexserver/backend/admin/control.php">PRODUCTION CONTROL</a></li>		
+		<li><a href="/cerexserver/backend/admin/production.php">PRODUCTION COST's</a></li>
+		<li class="selected"><a href="/cerexserver/backend/admin/control.php">PRODUCTION CONTROL</a></li>
 	</ul>
 	<br />
 	
-	<!-- MAIN CONTENT -->
-	<section>
-		<div id="table_web_stats">
-			<center>					
-				<table border=0 width=100%>					
-					<tr align=center>
-						<td><strong>ID</strong></td>
-						<td><strong>IP</strong></td>
-						<td><strong>Date</strong></td>
-						<td><strong>Time</strong></td>
-					</tr>
-<?php
-	//conexion
-		//$conexion = mysql_connect("localhost","dbo469629526","~marco123");
-		//if(!$conexion){
-		//	die ("No he podido conectar por la siguiente razon: ".mysql_error());
-		//}	
-		//mysql_select_db("db469629526",$conexion); 
-		$result = mysql_query("SELECT * FROM visitas", $conexion);	
-	
-		while($row = mysql_fetch_array($result)){
-				    $webid = $row['id'];
-				    $webip = $row['ip'];
-				    $webfecha = $row['fecha'];
-				    $webhora = $row['hora'];
+<!-- MAIN CONTENT -->
 
-			echo"<tr align=center><td>".$webid."</td><td>".$webip."</td><td>".$webfecha."</td>
-			<td>".$webhora."</td></tr>";			
-		}		   	
-		//mysql_close($conexion);
-?>
-				</table>					
-			</center>			
-		</div> <!-- end content -->
-	<br /><br />
-	</section>
+
+
 	
 <!-- FOOTER -->
 	<div id="footer">
@@ -106,4 +74,3 @@
 </html>
 
 <!-- end webPage -->
-

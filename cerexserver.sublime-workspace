@@ -40,14 +40,6 @@
 			}
 		},
 		{
-			"file": "/C/Users/Mark/Desktop/bf109e4_a-sheets.zip",
-			"settings":
-			{
-				"buffer_size": 3266817,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "backend/logout.php",
 			"settings":
 			{
@@ -59,7 +51,7 @@
 			"file": "backend/admin/admin.php",
 			"settings":
 			{
-				"buffer_size": 3532,
+				"buffer_size": 3607,
 				"line_ending": "Windows"
 			}
 		},
@@ -67,15 +59,23 @@
 			"file": "backend/admin/account.php",
 			"settings":
 			{
-				"buffer_size": 4476,
+				"buffer_size": 7748,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "backend/admin/css/estilos_adm.css",
+			"settings":
+			{
+				"buffer_size": 12255,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "backend/admin/editacc.php",
 			"settings":
 			{
-				"buffer_size": 4261,
+				"buffer_size": 4505,
 				"line_ending": "Windows"
 			}
 		},
@@ -91,7 +91,7 @@
 			"file": "backend/admin/newacc.php",
 			"settings":
 			{
-				"buffer_size": 1185,
+				"buffer_size": 1242,
 				"line_ending": "Windows"
 			}
 		},
@@ -99,7 +99,7 @@
 			"file": "backend/admin/saveacc.php",
 			"settings":
 			{
-				"buffer_size": 1182,
+				"buffer_size": 1243,
 				"line_ending": "Windows"
 			}
 		}
@@ -152,6 +152,12 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/fluent/backend/student/home.php",
+		"/C/xampp/htdocs/fluent/backend/student/css/style.css",
+		"/C/xampp/htdocs/fluent/backend/teacher/php/overview.php",
+		"/C/xampp/htdocs/fluent/backend/teacher/php/account.php",
+		"/C/xampp/htdocs/cerexserver/backend/admin/account.php",
+		"/C/Users/Mark/Desktop/bf109e4_a-sheets.zip",
 		"/D/BIBLIOTEKA/htdocs/fluent_copia de la ultima version/backend/admin/admin.php",
 		"/C/xampp/htdocs/cerexserver/borrador.php",
 		"/C/Users/Mark/Desktop/CustomizedListView/CustomizedListView/src/com/example/androidhive/CustomizedListView.java",
@@ -213,7 +219,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -239,7 +245,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 162.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -333,33 +339,6 @@
 				},
 				{
 					"buffer": 4,
-					"file": "/C/Users/Mark/Desktop/bf109e4_a-sheets.zip",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3266817,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "backend/logout.php",
 					"semi_transient": false,
 					"settings":
@@ -386,20 +365,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "backend/admin/admin.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3532,
+						"buffer_size": 3607,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1895,
-								1895
+								2225,
+								2225
 							]
 						],
 						"settings":
@@ -414,20 +393,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "backend/admin/account.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4476,
+						"buffer_size": 7748,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1894,
-								1894
+								2436,
+								2436
 							]
 						],
 						"settings":
@@ -436,7 +415,35 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 79.0,
+						"translation.y": 646.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "backend/admin/css/estilos_adm.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12255,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7262,
+								7262
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5388.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -447,15 +454,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4261,
+						"buffer_size": 4505,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								643,
-								643
+								3493,
+								3493
 							]
 						],
 						"settings":
@@ -464,7 +471,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1296.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -504,15 +511,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1185,
+						"buffer_size": 1242,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								705,
-								705
+								1153,
+								1153
 							]
 						],
 						"settings":
@@ -520,7 +527,7 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -531,15 +538,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1182,
+						"buffer_size": 1243,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								860,
-								860
+								1040,
+								1040
 							]
 						],
 						"settings":
@@ -547,7 +554,7 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 79.0,
+						"translation.y": 126.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

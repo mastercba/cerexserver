@@ -53,10 +53,33 @@
 	<ul class="tabrow"><!--- Tabs Menu -->
 		<li><a href="/cerexserver/backend/admin/admin.php">WEBPAGE</a></li>
 		<li class="selected"><a href="/cerexserver/backend/admin/account.php">ACCOUNTING</a></li>
+		<li><a href="/cerexserver/backend/admin/production.php">PRODUCTION COST's</a></li>
+		<li><a href="/cerexserver/backend/admin/control.php">PRODUCTION CONTROL</a></li>
 	</ul>
 	<br />
 	
 	<!-- MAIN CONTENT -->
+
+				<!-- Leo la base de datos - quick show -->
+					<?php 	$ccl_total = 118.00;	$cot_total = 500.50; $schedule_total = 330.00;$completed_total = 1000.02;$hrs_total = 265570;?>
+				<!-- End - quick show -->
+	    <div class="wrapper_overview">
+	        <div class="events">
+	        	<nav>
+			  		<ul>
+						<li>A1.CajaChica<span class="badge"><?php echo" ".$completed_total." "; ?></span></li>
+						<li>A2.Banco<span class="badge green"><?php echo" ".$schedule_total." "; ?></span></li>
+						<li>A3.Utilidades Retenidas<span class="badge white"><?php echo" ".$schedule_total." "; ?></span></li>
+						<li>Total INGRESO(Bs.)<span class="badge yellow"><?php echo" ".$cot_total." "; ?></span></li>
+						<li>Total EGRESO(Bs.)<span class="badge red"><?php echo" ".$ccl_total." "; ?></span></li>
+						<li>TOTAL(Bs.)<span class="badge white"><?php echo" ".$hrs_total." "; ?></span></li>
+			   		</ul>
+			   	</nav>
+			</div>
+		</div>
+
+
+
 	<section>
 		<div id="table_account">
 			<center>					
@@ -66,7 +89,8 @@
 						<td><strong>Date & Time</strong></td>
 						<td align=left><strong>Description</strong></td>
 						
-						<td><strong>Cuenta</strong></td>
+						<td><strong>Account OUT</strong></td>
+						<td><strong>Account IN</strong></td>
 						<td><strong>Income</strong></td>
 						<td><strong>Expense</strong></td>
 						<td><strong>Balance</strong></td>
@@ -76,6 +100,7 @@
 <?php 
 		$result = mysql_query("SELECT * FROM account", $conexion);	
 	
+		$accsaldo = 0;
 		while($row = mysql_fetch_array($result)){
 				    $accid = $row['id'];
 				    $accfecha = $row['created_at'];
@@ -83,12 +108,15 @@
 
 				    $accingresos = $row['ingreso'];
 				    $accegresos = $row['egreso'];
-				    $accsaldo = $row['saldo'];
+				    //$accsaldo = $row['saldo'];
+				    
+				    $accsaldo = $accsaldo + ($row['ingreso'] - $row['egreso']);
 				    $acccuenta = $row['cuenta'];
 
 
 			echo"<tr align=center><td>".$accid."</td><td>".$accfecha."</td>
-			<td align=left>".$accdetalle."</td><td align=center>".$acccuenta."</td>
+			<td align=left>".$accdetalle."</td><td align=left>".$acccuenta."</td>
+			<td align=left>".$acccuenta."</td>
 			<td align=right>".$accingresos."</td><td align=right>".$accegresos."</td>
 			<td align=right>".$accsaldo."</td>
 
@@ -107,14 +135,57 @@
 
 					<td><select name=acccuenta>
 						<option>select</option>
-	    				<option>4000-Prestamos</option>
-	    				<option>4000-Prestamos</option>
-	    				<option>4000-Prestamos</option>
+	    				<option>---------</option>
+	    				<option>A1-Caja Chica</option>
+	    				<option>A2-Banco</option>
+	    				<option>A3-Utilidades Retenidas</option>
+    			    	<option>---------------</option>
+    			    	<option>P1-Pasivo a Corto Plazo</option>
+    			    	<option>P2-Pasivo a Largo Plazo</option>
+    			    	<option>-----------------------</option>
+    			    	<option>C1-Capital Contable</option>
+    			    	<option>-------------------</option>
+    			    	<option>V1-Ingreso Ventas</option>
+    			    	<option>-----------------</option>
+						<option>T1-Costo de Produccion</option>
+						<option>-----------------</option>
+						<option>G1-Gasto de Venta</option>
+						<option>G2-Gastos Generales</option>
+						<option>-----------------</option>
+						<option>I1-Impuestos</option>
+						<option>------------</option>
+						<option>O1-Cuenta Deudora</option>
+						<option>O2-Cuenta Acreedora</option>
     			    	</select></td>
+
+    			    <td><select name=acccuenta>
+						<option>select</option>
+	    				<option>---------</option>
+	    				<option>A1-Caja Chica</option>
+	    				<option>A2-Banco</option>
+	    				<option>A3-Utilidades Retenidas</option>
+    			    	<option>---------------</option>
+    			    	<option>P1-Pasivo a Corto Plazo</option>
+    			    	<option>P2-Pasivo a Largo Plazo</option>
+    			    	<option>-----------------------</option>
+    			    	<option>C1-Capital Contable</option>
+    			    	<option>-------------------</option>
+    			    	<option>V1-Ingreso Ventas</option>
+    			    	<option>-----------------</option>
+						<option>T1-Costo de Produccion</option>
+						<option>-----------------</option>
+						<option>G1-Gasto de Venta</option>
+						<option>G2-Gastos Generales</option>
+						<option>-----------------</option>
+						<option>I1-Impuestos</option>
+						<option>------------</option>
+						<option>O1-Cuenta Deudora</option>
+						<option>O2-Cuenta Acreedora</option>
+    			    	</select></td>	
 
 					<td align=right><input type='text' name='accingresos' value='' size=7></td>
 					<td align=right><input type='text' name='accegresos' value='' size=7></td>
-					<td align=right><input type='text' name='accsaldo' value='' size=7></td>
+					<td></td>
 		
 					<td><p></p><input type='image' src='img/add.png' width='14' height=14'/></td>
 				</tr>";
