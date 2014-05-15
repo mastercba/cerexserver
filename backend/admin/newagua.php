@@ -21,33 +21,34 @@
 	//Crear variables
 
 	//Recupero variables
-		$lfecha = $_POST['luzfecha'];
-		$lperiodo = $_POST['luzperiodo'];	
-		$lconsumo = $_POST['luzconsumo'];
-		$lcuenta = $_POST['acccuenta'];
-		$legreso = $_POST['luzegreso'];
-		$lsuma	= $_SESSION['luzsuma'];
-		$sieteuno = 71;
+		$afecha = $_POST['aguafecha'];
+		$aperiodo = $_POST['aguaperiodo'];	
+		$aconsumo = $_POST['aguaconsumo'];
+		$acuenta = $_POST['aguacuenta'];
+		$aegreso = $_POST['aguaegreso'];
+		$asuma	= $_SESSION['aguasuma'];
+		$sieteuno = 72;
 
 	//Update chart of account
         $result1 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$sieteuno."'", $conexion);    
         $row1 = mysql_fetch_array($result1);
         $newsaldoa = $row1['saldo'];
-        $newsaldoa = $newsaldoa + $legreso;
+        $newsaldoa = $newsaldoa + $aegreso;
 
-        $result2 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$lcuenta."'", $conexion);    
+        $result2 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$acuenta."'", $conexion);    
         $row2 = mysql_fetch_array($result2);
         $newsaldode = $row2['saldo'];
-        $newsaldode = $newsaldode - $legreso;
+        $newsaldode = $newsaldode - $aegreso;
 				
 				mysql_query("UPDATE catalogo SET saldo='".$newsaldode."'
-				WHERE id = '".$lcuenta."'");
+				WHERE id = '".$acuenta."'");
 				mysql_query("UPDATE catalogo SET saldo='".$newsaldoa."'
-				WHERE id = '".$sieteuno."'");
+				WHERE id = '".$sieteuno."'");		
 
-	
-		$result = mysql_query(("INSERT INTO luz (created_at, periodo, consumo, egreso, de_cuenta)
-		 VALUES('$lfecha','$lperiodo','$lconsumo','$legreso','$lcuenta')"), $conexion);
+
+
+		$result2 = mysql_query(("INSERT INTO agua (created_at, periodo, consumo, egreso, de_cuenta)
+		 VALUES('$afecha','$aperiodo','$aconsumo','$aegreso','$acuenta')"), $conexion);
 
 		echo '<meta HTTP-EQUIV="REFRESH" content="0; url=production.php">';
 

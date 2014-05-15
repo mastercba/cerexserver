@@ -18,14 +18,23 @@
   
 	//Crear variables	
 
-	$idagua = $_GET['aguid'];
+	$idsemilla = $_GET['semiid'];
 
-    $once = 72; 
+    $once = 73; 
     //Recupero el monto a sumar y restar
-        $result7 = mysql_query("SELECT * FROM agua WHERE id='".$idagua."'", $conexion);    
+        $result7 = mysql_query("SELECT * FROM semillas WHERE id='".$idsemilla."'", $conexion);    
         $row7 = mysql_fetch_array($result7);
         $monto = $row7['egreso'];
         $de = $row7['de_cuenta'];
+
+    if($monto == 0){
+    //Borro fila de agua         
+        $result = mysql_query("DELETE FROM semillas WHERE id='".$idsemilla."'", $conexion);
+
+        echo '<meta HTTP-EQUIV="REFRESH" content="0; url=production.php">';
+
+    }else{
+  
     //Update chart of account
         $result1 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$once."'", $conexion);    
         $row1 = mysql_fetch_array($result1);
@@ -42,9 +51,9 @@
                 mysql_query("UPDATE catalogo SET saldo='".$newsaldoa."'
                 WHERE id = '".$once."'");
 
-    //Borro fila de agua    
-		$result = mysql_query("DELETE FROM agua WHERE id='".$idagua."'", $conexion);
+    //Borro fila de agua     
+		$result = mysql_query("DELETE FROM semillas WHERE id='".$idsemilla."'", $conexion);
 
 		echo '<meta HTTP-EQUIV="REFRESH" content="0; url=production.php">';
-
+    }      
 ?>

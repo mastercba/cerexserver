@@ -51,10 +51,10 @@
 	</div>
 	<br />
 	<ul class="tabrow"><!--- Tabs Menu -->
-		<li class="selected"><a href="/cerexserver/backend/admin/admin.php">WEBPAGE</a></li>
-		<li><a href="/cerexserver/backend/admin/account.php">ACCOUNTING</a></li>
-		<li><a href="/cerexserver/backend/admin/production.php">PRODUCTION</a></li>
-		<li><a href="/cerexserver/backend/admin/control.php">PRODUCTION CONTROL</a></li>		
+		<li class="selected"><a href="/cerexserver/backend/admin/admin.php">WWW</a></li>
+		<li><a href="/cerexserver/backend/admin/account.php">BALANCE GENERAL</a></li>
+		<li><a href="/cerexserver/backend/admin/production.php">COSTOS de PRODUCCION</a></li>
+		<li><a href="/cerexserver/backend/admin/control.php">PRODUCCION</a></li>		
 	</ul>
 	<br />
 	

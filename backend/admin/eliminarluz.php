@@ -19,7 +19,29 @@
 	//Crear variables	
 
 	$idluz = $_GET['luid'];
+    $once = 71; 
+    //Recupero el monto a sumar y restar
+        $result7 = mysql_query("SELECT * FROM luz WHERE id='".$idluz."'", $conexion);    
+        $row7 = mysql_fetch_array($result7);
+        $monto = $row7['egreso'];
+        $de = $row7['de_cuenta'];
+    //Update chart of account
+        $result1 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$once."'", $conexion);    
+        $row1 = mysql_fetch_array($result1);
+        $newsaldoa = $row1['saldo'];
+        $newsaldoa = $newsaldoa - $monto;
 
+        $result2 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$de."'", $conexion);    
+        $row2 = mysql_fetch_array($result2);
+        $newsaldode = $row2['saldo'];
+        $newsaldode = $newsaldode + $monto;
+                
+                mysql_query("UPDATE catalogo SET saldo='".$newsaldode."'
+                WHERE id = '".$de."' ");
+                mysql_query("UPDATE catalogo SET saldo='".$newsaldoa."'
+                WHERE id = '".$once."'");
+
+    //Borro fila de luz
 		$result = mysql_query("DELETE FROM luz WHERE id='".$idluz."'", $conexion);
 
 		echo '<meta HTTP-EQUIV="REFRESH" content="0; url=production.php">';

@@ -51,38 +51,127 @@
 	</div>
 	<br />
 	<ul class="tabrow"><!--- Tabs Menu -->
-		<li><a href="/cerexserver/backend/admin/admin.php">WEBPAGE</a></li>
-		<li><a href="/cerexserver/backend/admin/account.php">ACCOUNTING</a></li>
-		<li class="selected"><a href="/cerexserver/backend/admin/production.php">PRODUCTION COST's</a></li>
-		<li><a href="/cerexserver/backend/admin/control.php">PRODUCTION CONTROL</a></li>
+		<li><a href="/cerexserver/backend/admin/admin.php">WWW</a></li>
+		<li><a href="/cerexserver/backend/admin/account.php">BALANCE GENERAL</a></li>
+		<li class="selected"><a href="/cerexserver/backend/admin/production.php">COSTOS de PRODUCCION</a></li>
+		<li><a href="/cerexserver/backend/admin/control.php">PRODUCCION</a></li>
 	</ul>
 	<br />
 	
 	<!-- MAIN CONTENT -->
-		<!-- Quick Show -->
+<!-- Quick Show -->
 		<!-- Leo la base de datos - quick show -->
-					<?php 	$ccl_total = 118.00;	$cot_total = 500.50; $schedule_total = 330.00;$completed_total = 1000.02;$hrs_total = 265570;?>
-				<!-- End - quick show -->
+			<?php 	
+        $result121 = mysql_query("SELECT saldo FROM catalogo WHERE id='50'", $conexion);    
+        $row121 = mysql_fetch_array($result121);
+        $ventas = $row121['saldo'];
+        $result122 = mysql_query("SELECT saldo FROM catalogo WHERE id='71'", $conexion);    
+        $row122 = mysql_fetch_array($result122);
+        $luz_total = $row122['saldo'];
+        $result123 = mysql_query("SELECT saldo FROM catalogo WHERE id='72'", $conexion);    
+        $row123 = mysql_fetch_array($result123);
+        $agua_total = $row123['saldo'];
+        $result124 = mysql_query("SELECT saldo FROM catalogo WHERE id='73'", $conexion);    
+        $row124 = mysql_fetch_array($result124);
+        $semilla_total = $row124['saldo'];
+        $result125 = mysql_query("SELECT saldo FROM catalogo WHERE id='74'", $conexion);    
+        $row125 = mysql_fetch_array($result125);
+        $nutriente_total = $row125['saldo'];
+        $result126 = mysql_query("SELECT saldo FROM catalogo WHERE id='77'", $conexion);    
+        $row126 = mysql_fetch_array($result126);
+        $otross = $row126['saldo'];
+
+			//$ventas = $_SESSION['ventasuma']; 
+			//	$luz_total = $_SESSION['luzsuma'];	$agua_total = $_SESSION['aguasuma']; 
+			//	$semilla_total = $_SESSION['semistock'];  $nutriente_total = $_SESSION['nutristock'];
+			?>
+<!-- End - quick show -->
 	    <div class="wrapper_overview">
 	        <div class="events">
 	        	<nav>
 			  		<ul>
-						<li>Energia Electrica<span class="badge"><?php echo" ".$completed_total." "; ?></span></li>
-						<li>Suministro Agua<span class="badge green"><?php echo" ".$schedule_total." "; ?></span></li>
-						<li>Semillas<span class="badge white"><?php echo" ".$schedule_total." "; ?></span></li>
-						<li>Nutrientes<span class="badge yellow"><?php echo" ".$cot_total." "; ?></span></li>
-						<li>Otros<span class="badge red"><?php echo" ".$ccl_total." "; ?></span></li>
+			  			<li>Ingresos Ventas<span class="badge"><?php echo" ".$ventas." "; ?></span></li>
+						<li>Energia Electrica<span class="badge yellow"><?php echo" ".$luz_total." "; ?></span></li>
+						<li>Suministro Agua<span class="badge green"><?php echo" ".$agua_total." "; ?></span></li>
+						<li>Semillas<span class="badge white"><?php echo" ".$semilla_total." "; ?></span></li>
+						<li>Nutrientes<span class="badge red"><?php echo" ".$nutriente_total." "; ?></span></li>
+						<li>Otros Produccion<span class="badge blue"><?php echo" ".$otross." "; ?></span></li>
 			   		</ul>
 			   	</nav>
 			</div>
 		</div>
+
+<!-- Ingresos x Ventas -->
+	<section>
+		<div id="table_production">
+				<table border=0 width=100%>					
+					<tr align=center>
+						<td align=left><strong><u>Ventas</u></strong></td><tr></tr>
+						<td><strong>Date & Time</strong></td>
+						<td><strong>Cuenta</strong></td>
+						<td><strong>Cantidad(Pzas.)</strong></td>
+						<td align=left><strong>Modulo(s)</strong></td>
+						<td align=left><strong>Precio(Bs.)</strong></td>
+						<td align=left><strong>Balance(Bs.)</strong></td>
+						<td><strong>Actions</strong></td>
+					</tr>
+
+<?php 
+		$resultsale = mysql_query("SELECT * FROM products", $conexion);	
+		$venta = 0;
+		while($rowsa = mysql_fetch_array($resultsale)){
+				    $ventaid = $rowsa['id'];
+   				    $ventafecha = $rowsa['created_at'];
+				    $ventaprecio = $rowsa['precio'];
+				    $ventacantidad = $rowsa['cantidad'];
+				    $ventamodulo = $rowsa['modulo'];
+
+				    $venta = $venta + ($ventacantidad * $ventaprecio);
+
+				    //$ventasuma = $ventasuma + $ventaprecio; 
+				    $_SESSION['ventasuma'] = $venta;
+				    
+
+				   	
+
+   				    //$ventabalance = $rowsa['balance'];
+
+			echo"<tr align=center><td>".$ventafecha."</td><td>Caja de Ahorro Banco</td>
+			<td>".$ventacantidad."</td>
+			<td align=left>".$ventamodulo."</td><td align=left>".$ventaprecio."</td>
+			<td align=left>".$venta."</td>
+			<td><a href='editluz.php?veid=".$ventaid."'><img src='img/pencil.png' width='14' height=14'></a>
+			|<a href='eliminarventa.php?veid=".$ventaid."'><img src='img/trash.png' width='14' height=14'></a>
+			</td>
+			</tr>";			
+		}
+	//Anadir un registro
+			echo"
+				<tr align=center>
+					<form action='newventa.php' method = 'POST'>
+					<td><input type='date' name='ventafecha' value='' size=8></td>
+					<td align=center>Caja de Ahorro Banco</td>
+					<td align=center><input type='text' name='ventacant' value='' size=5></td>
+					<td align=center><input type='text' name='ventamodulo' value='' size=3></td>
+					<td align=left><input type='text' name='ventabalance' value='' size=7></td>
+					<td></td>
+					<td><p></p><input type='image' src='img/add.png' width='14' height=14'/></td>
+					</form>
+				</tr>";
+
+		//mysql_close($conexion);
+?>
+				</table>
+		</div>
+	</section>
+
 
 <!-- Energia Electrica -->
 	<section>
 		<div id="table_production">
 				<table border=0 width=100%>					
 					<tr align=center>
-						<td align=left><strong><u>ENERGIA ELECTRICA (71)</u></strong></td><tr></tr>
+						<td align=left><strong><u>ENERGIA ELECTRICA</u></strong></td><tr></tr>
 						<td><strong>Date & Time</strong></td>
 						<td><strong>Periodo</strong></td>
 						<td align=left><strong>Consumo</strong></td>
@@ -94,12 +183,14 @@
 
 <?php 
 		$result = mysql_query("SELECT * FROM luz", $conexion);	
-	
+		$luzsuma = 0;
 		while($row = mysql_fetch_array($result)){
 				    $luzid = $row['id'];
 				    $luzegreso = $row['egreso'];
-				    $_SESSION['luzsaldo'] = $row['saldo'];
-				    $luzsaldo = $row['saldo'];
+				    $luzsuma = $luzsuma + $luzegreso; 
+
+				    $_SESSION['luzsuma'] = $luzsuma;
+
 				    $luzperiodo = $row['periodo'];
 				    $luzfecha = $row['created_at'];
 				    $luzcuenta = $row['de_cuenta'];
@@ -107,8 +198,8 @@
 
 			echo"<tr align=center><td>".$luzfecha."</td><td>".$luzperiodo."</td>
 			<td align=left>".$luzconsumo."</td><td align=left>".$luzcuenta."</td>
-			<td align=left>".$luzegreso."</td><td align=left>".$luzsaldo."</td>
-			<td><a href='editacc.php?luid=".$luzid."'><img src='img/pencil.png' width='14' height=14'></a>
+			<td align=left>".$luzegreso."</td><td align=left>".$luzsuma."</td>
+			<td><a href='editluz.php?luid=".$luzid."'><img src='img/pencil.png' width='14' height=14'></a>
 			|<a href='eliminarluz.php?luid=".$luzid."'><img src='img/trash.png' width='14' height=14'></a>
 			</td>
 			</tr>";			
@@ -120,18 +211,17 @@
 					<td><input type='date' name='luzfecha' value='' size=8></td>
 					<td  align=center><input type='text' name='luzperiodo' value='' size=15></td>
 					<td  align=left><input type='text' name='luzconsumo' value='' size=10></td>
-					<td  align=left><select name=luzcuenta>
-						<option>select</option>
-	    				<option>---------</option>
-	    				<option>10-Caja Chica</option>
-	    				<option>10</option>
-	    				<option>20-Banco</option>
-    			    	<option>20</option>
-    			    	<option>---------</option>
-    			    	</select></td>
+					<td  align=left><select name='acccuenta'>
+						<option>-----Select-----</option>
+						<option value='10'>Caja Chica</option>
+						<option value='11'>Caja de Ahorro Banco</option>
+    			    	<option>----------</option>
+    			    	</select>
+    			    </td>
 					<td align=left><input type='text' name='luzegreso' value='' size=7></td>
 					<td></td>
 					<td><p></p><input type='image' src='img/add.png' width='14' height=14'/></td>
+					</form>
 				</tr>";
 
 		//mysql_close($conexion);
@@ -146,7 +236,7 @@
 		<div id="table_production">
 				<table border=0 width=100%>					
 					<tr align=center>
-						<td align=left><strong><u>SUMINISTRO AGUA (72)</u></strong></td><tr></tr>
+						<td align=left><strong><u>SUMINISTRO AGUA</u></strong></td><tr></tr>
 						<td><strong>Date & Time</strong></td>
 						<td><strong>Periodo</strong></td>
 						<td align=left><strong>Consumo</strong></td>
@@ -157,22 +247,24 @@
 					</tr>
 
 <?php 
-		$result1 = mysql_query("SELECT * FROM agua", $conexion);	
+		$result11 = mysql_query("SELECT * FROM agua", $conexion);	
+		$aguasuma = 0;
+		while($row11 = mysql_fetch_array($result11)){
+				    $aguaid = $row11['id'];
+				    $aguaegreso = $row11['egreso'];
 
-		while($row1 = mysql_fetch_array($result1)){
-				    $aguaid = $row1['id'];
-				    $aguaegreso = $row1['egreso'];
-				    $_SESSION['aguasaldo'] = $row1['saldo'];
-				    $aguasaldo = $row1['saldo'];
-				    $aguaperiodo = $row1['periodo'];
-				    $aguafecha = $row1['created_at'];
-				    $aguacuenta = $row1['de_cuenta'];
-				    $aguaconsumo = $row1['consumo'];
+				    $aguasuma = $aguasuma + $aguaegreso;
+				    $_SESSION['aguasuma'] = $aguasuma;
+
+				    $aguaperiodo = $row11['periodo'];
+				    $aguafecha = $row11['created_at'];
+				    $aguacuenta = $row11['de_cuenta'];
+				    $aguaconsumo = $row11['consumo'];
 
 			echo"<tr align=center><td>".$aguafecha."</td><td>".$aguaperiodo."</td>
 			<td align=left>".$aguaconsumo."</td><td align=left>".$aguacuenta."</td>
-			<td align=left>".$aguaegreso."</td><td align=left>".$aguasaldo."</td>
-			<td><a href='editacc.php?aguid=".$aguaid."'><img src='img/pencil.png' width='14' height=14'></a>
+			<td align=left>".$aguaegreso."</td><td align=left>".$aguasuma."</td>
+			<td><a href='editagua.php?aguid=".$aguaid."'><img src='img/pencil.png' width='14' height=14'></a>
 			|<a href='eliminaragua.php?aguid=".$aguaid."'><img src='img/trash.png' width='14' height=14'></a>
 			</td>
 			</tr>";			
@@ -180,22 +272,21 @@
 	//Anadir un registro
 			echo"
 				<tr align=center>
-					<form action='newluz.php' method = 'POST'>
-					<td><input type='date' name='luzfecha' value='' size=8></td>
-					<td  align=center><input type='text' name='luzperiodo' value='' size=15></td>
-					<td  align=left><input type='text' name='luzconsumo' value='' size=10></td>
-					<td  align=left><select name=luzcuenta>
-						<option>select</option>
-	    				<option>---------</option>
-	    				<option>10-Caja Chica</option>
-	    				<option>10</option>
-	    				<option>20-Banco</option>
-    			    	<option>20</option>
-    			    	<option>---------</option>
-    			    	</select></td>
-					<td align=left><input type='text' name='luzegreso' value='' size=7></td>
+					<form action='newagua.php' method = 'POST'>
+					<td><input type='date' name='aguafecha' value='' size=8></td>
+					<td  align=center><input type='text' name='aguaperiodo' value='' size=15></td>
+					<td  align=left><input type='text' name='aguaconsumo' value='' size=10></td>
+					<td  align=left><select name='aguacuenta'>
+						<option>-----Select-----</option>
+						<option value='10'>Caja Chica</option>
+						<option value='11'>Caja de Ahorro Banco</option>
+    			    	<option>----------</option>
+    			    	</select>
+    			    </td>
+					<td align=left><input type='text' name='aguaegreso' value='' size=7></td>
 					<td></td>
 					<td><p></p><input type='image' src='img/add.png' width='14' height=14'/></td>
+					</form>
 				</tr>";
 
 		//mysql_close($conexion);
@@ -205,12 +296,13 @@
 		</div>
 	</section>
 
+
 <!-- Semillas -->
 	<section>
 		<div id="table_production">
 				<table border=0 width=100%>					
 					<tr align=center>
-						<td align=left><strong><u>SEMILLA (73)</u></strong></td><tr></tr>
+						<td align=left><strong><u>SEMILLA</u></strong></td><tr></tr>
 						<td><strong>Date & Time</strong></td>
 						<td><strong>Decription</strong></td>
 						<td align=left><strong>Qtty BUY</strong></td>
@@ -224,61 +316,71 @@
 
 <?php 
 		$result2 = mysql_query("SELECT * FROM semillas", $conexion);	
-
+		$semisuma = 0;
+		$semiaddstock = 0;
+		$semireststock = 0;
 		while($row2 = mysql_fetch_array($result2)){
 				    $semiid = $row2['id'];
 				    $semiegreso = $row2['egreso'];
-				    $_SESSION['semisaldo'] = $row2['saldo'];
-				    $semisaldo = $row2['saldo'];
-				    $semibuy = $row2['cant_buy'];
-				    $semiused = $row2['cant_used'];
-				    $semistock = $row2['cant_stock'];
+				    $semidesp = $row2['descripcion'];
 				    $semifecha = $row2['created_at'];
 				    $semicuenta = $row2['de_cuenta'];
-				    $semidesp = $row2['descripcion'];
+				    $semibuy = $row2['cant_buy'];
+				    $semiused = $row2['cant_used'];
+				    
+
+				    $semisuma = $semisuma + $semiegreso; 
+				    $_SESSION['semisuma'] = $semisuma;
+
+				    $semiaddstock = $semiaddstock + $semibuy; 
+				    $_SESSION['semiaddstock'] = $semiaddstock;
+				    $semireststock = $semireststock + $semiused; 
+				    $_SESSION['semireststock'] = $semireststock;				    				    
+				    $semistock = $semiaddstock - $semireststock;
+				    $_SESSION['semistock'] = $semiaddstock - $semireststock;				    
 
 			echo"<tr align=center><td>".$semifecha."</td><td>".$semidesp."</td>
 			<td align=left>".$semibuy."</td><td align=left>".$semiused."</td><td align=left>".$semistock."</td>
-			<td align=left>".$semicuenta."</td><td align=left>".$semiegreso."</td><td align=left>".$semisaldo."</td>
-			<td><a href='editacc.php?aguid=".$semiid."'><img src='img/pencil.png' width='14' height=14'></a>
-			|<a href='eliminarsemi.php?aguid=".$semiid."'><img src='img/trash.png' width='14' height=14'></a>
+			<td align=left>".$semicuenta."</td><td align=left>".$semiegreso."</td><td align=left>".$semisuma."</td>
+			<td><a href='editsemi.php?semiid=".$semiid."'><img src='img/pencil.png' width='14' height=14'></a>
+			|<a href='eliminarsemi.php?semiid=".$semiid."'><img src='img/trash.png' width='14' height=14'></a>
 			</td>
 			</tr>";			
 		}
 	//Anadir un registro
 			echo"
 				<tr align=center>
-					<form action='newluz.php' method = 'POST'>
-					<td><input type='date' name='luzfecha' value='' size=8></td>
-					<td  align=center><input type='text' name='luzperiodo' value='' size=15></td>
-					<td  align=left><input type='text' name='luzconsumo' value='' size=10></td>
+					<form action='newsemilla.php' method = 'POST'>
+					<td><input type='date' name='semifecha' value='' size=8></td>
+					<td  align=center><input type='text' name='semidescripcion' value='' size=15></td>
+					<td  align=left><input type='text' name='semibuy' value='' size=10></td>
 					<td></td><td></td>
-					<td  align=left><select name=luzcuenta>
-						<option>select</option>
-	    				<option>---------</option>
-	    				<option>10-Caja Chica</option>
-	    				<option>10</option>
-	    				<option>20-Banco</option>
-    			    	<option>20</option>
-    			    	<option>---------</option>
-    			    	</select></td>
-					<td align=left><input type='text' name='luzegreso' value='' size=7></td>
+					<td  align=left><select name=semicuenta>
+						<option>-----Select-----</option>
+						<option value='10'>Caja Chica</option>
+						<option value='11'>Caja de Ahorro Banco</option>
+    			    	<option>----------</option>
+    			    	</select>
+    			    </td>
+					<td align=left><input type='text' name='semiegreso' value='' size=7></td>
 					<td></td>
 					<td><p></p><input type='image' src='img/add.png' width='14' height=14'/></td>
+					</form>
 				</tr>";
 	//Usar un registro
 			echo"
 				<tr align=center>
-					<form action='newluz.php' method = 'POST'>
-					<td><input type='date' name='luzfecha' value='' size=8></td>
-					<td  align=center><input type='text' name='luzperiodo' value='' size=15></td>
+					<form action='usedsemilla.php' method = 'POST'>
+					<td><input type='date' name='semifecha' value='' size=8></td>
+					<td  align=center><input type='text' name='semidescripcion' value='' size=15></td>
 					<td></td>
-					<td  align=left><input type='text' name='luzconsumo' value='' size=10></td>
+					<td  align=left><input type='text' name='semiused' value='' size=10></td>
 					<td></td>
     			    <td></td>	
 					<td></td>
 					<td></td>
 					<td><p></p><input type='image' src='img/cross.png' width='14' height=14'/></td>
+					</form>
 				</tr>";
 
 		//mysql_close($conexion);
@@ -293,7 +395,7 @@
 		<div id="table_production">
 				<table border=0 width=100%>					
 					<tr align=center>
-						<td align=left><strong><u>NUTRIENTE (74)</u></strong></td><tr></tr>
+						<td align=left><strong><u>NUTRIENTE</u></strong></td><tr></tr>
 						<td><strong>Date & Time</strong></td>
 						<td><strong>Decription</strong></td>
 						<td align=left><strong>Qtty BUY</strong></td>
@@ -307,61 +409,167 @@
 
 <?php 
 		$result3 = mysql_query("SELECT * FROM nutriente", $conexion);	
-
+		$nutrisuma = 0;
+		$nutriaddstock = 0;
+		$nutrireststock = 0;
 		while($row3 = mysql_fetch_array($result3)){
 				    $nutriid = $row3['id'];
 				    $nutriegreso = $row3['egreso'];
-				    $_SESSION['semisaldo'] = $row3['saldo'];
-				    $nutrisaldo = $row3['saldo'];
-				    $nutribuy = $row3['cant_buy'];
-				    $nutriused = $row3['cant_used'];
-				    $nutristock = $row3['cant_stock'];
+				    $nutridesp = $row3['descripcion'];
 				    $nutrifecha = $row3['created_at'];
 				    $nutricuenta = $row3['de_cuenta'];
-				    $nutridesp = $row3['descripcion'];
+				    $nutribuy = $row3['cant_buy'];
+				    $nutriused = $row3['cant_used'];
+				    
+
+				    $nutrisuma = $nutrisuma + $nutriegreso; 
+				    $_SESSION['nutrisuma'] = $nutrisuma;
+
+				    $nutriaddstock = $nutriaddstock + $nutribuy; 
+				    $_SESSION['nutriaddstock'] = $nutriaddstock;
+				    $nutrireststock = $nutrireststock + $nutriused; 
+				    $_SESSION['nutrireststock'] = $nutrireststock;				    				    
+				    $nutristock = $nutriaddstock - $nutrireststock;
+				    $_SESSION['nutristock'] = $nutriaddstock - $nutrireststock;	
+
 
 			echo"<tr align=center><td>".$nutrifecha."</td><td>".$nutridesp."</td>
 			<td align=left>".$nutribuy."</td><td align=left>".$nutriused."</td><td align=left>".$nutristock."</td>
-			<td align=left>".$nutricuenta."</td><td align=left>".$nutriegreso."</td><td align=left>".$nutrisaldo."</td>
-			<td><a href='editacc.php?aguid=".$nutriid."'><img src='img/pencil.png' width='14' height=14'></a>
-			|<a href='eliminarsemi.php?aguid=".$nutriid."'><img src='img/trash.png' width='14' height=14'></a>
+			<td align=left>".$nutricuenta."</td><td align=left>".$nutriegreso."</td><td align=left>".$nutrisuma."</td>
+			<td><a href='editnutri.php?nutriid=".$nutriid."'><img src='img/pencil.png' width='14' height=14'></a>
+			|<a href='eliminarnutri.php?nutriid=".$nutriid."'><img src='img/trash.png' width='14' height=14'></a>
 			</td>
-			</tr>";			
+			</tr>";				
 		}
 	//Anadir un registro
 			echo"
 				<tr align=center>
-					<form action='newluz.php' method = 'POST'>
-					<td><input type='date' name='luzfecha' value='' size=8></td>
-					<td  align=center><input type='text' name='luzperiodo' value='' size=15></td>
-					<td  align=left><input type='text' name='luzconsumo' value='' size=10></td>
+					<form action='newnutri.php' method = 'POST'>
+					<td><input type='date' name='nutrifecha' value='' size=8></td>
+					<td  align=center><input type='text' name='nutridescripcion' value='' size=15></td>
+					<td  align=left><input type='text' name='nutribuy' value='' size=10></td>
 					<td></td><td></td>
-					<td  align=left><select name=luzcuenta>
-						<option>select</option>
-	    				<option>---------</option>
-	    				<option>10-Caja Chica</option>
-	    				<option>10</option>
-	    				<option>20-Banco</option>
-    			    	<option>20</option>
-    			    	<option>---------</option>
-    			    	</select></td>
-					<td align=left><input type='text' name='luzegreso' value='' size=7></td>
+					<td  align=left><select name=nutricuenta>
+						<option>-----Select-----</option>
+						<option value='10'>Caja Chica</option>
+						<option value='11'>Caja de Ahorro Banco</option>
+    			    	<option>----------</option>
+    			    	</select>
+    			    </td>
+					<td align=left><input type='text' name='nutriegreso' value='' size=7></td>
 					<td></td>
 					<td><p></p><input type='image' src='img/add.png' width='14' height=14'/></td>
+					</form>
 				</tr>";
 	//Usar un registro
 			echo"
 				<tr align=center>
-					<form action='newluz.php' method = 'POST'>
-					<td><input type='date' name='luzfecha' value='' size=8></td>
-					<td  align=center><input type='text' name='luzperiodo' value='' size=15></td>
+					<form action='usednutriente.php' method = 'POST'>
+					<td><input type='date' name='nutrifecha' value='' size=8></td>
+					<td  align=center><input type='text' name='nutridescripcion' value='' size=15></td>
 					<td></td>
-					<td  align=left><input type='text' name='luzconsumo' value='' size=10></td>
+					<td  align=left><input type='text' name='nutriused' value='' size=10></td>
 					<td></td>
     			    <td></td>	
 					<td></td>
 					<td></td>
 					<td><p></p><input type='image' src='img/cross.png' width='14' height=14'/></td>
+					</form>
+				</tr>";
+
+		//mysql_close($conexion);
+?>
+				</table>
+
+		</div>
+	</section>
+
+
+<!-- otros -->
+	<section>
+		<div id="table_production">
+				<table border=0 width=100%>					
+					<tr align=center>
+						<td align=left><strong><u>OTROS</u></strong></td><tr></tr>
+						<td><strong>Date & Time</strong></td>
+						<td><strong>Decription</strong></td>
+						<td align=left><strong>Qtty BUY</strong></td>
+						<td align=left><strong>Qtty USED</strong></td>
+						<td align=left><strong>Qtty STOCK</strong></td>
+						<td align=left><strong>Account</strong></td>
+						<td align=left><strong>Expense</strong></td>
+						<td align=left><strong>Balance</strong></td>
+						<td><strong>Actions</strong></td>
+					</tr>
+
+<?php 
+		$result3 = mysql_query("SELECT * FROM otros", $conexion);	
+		$otrosuma = 0;
+		$otroaddstock = 0;
+		$otroreststock = 0;
+		while($row3 = mysql_fetch_array($result3)){
+				    $otroid = $row3['id'];
+				    $otroegreso = $row3['egreso'];
+				    $otrodesp = $row3['descripcion'];
+				    $otrofecha = $row3['created_at'];
+				    $otrocuenta = $row3['de_cuenta'];
+				    $otrobuy = $row3['cant_buy'];
+				    $otroused = $row3['cant_used'];
+				    
+
+				    $otrosuma = $otrosuma + $otroegreso; 
+				    $_SESSION['otrosuma'] = $otrosuma;
+
+				    $otroaddstock = $otroaddstock + $otrobuy; 
+				    $_SESSION['otroaddstock'] = $otroaddstock;
+				    $otroreststock = $otroreststock + $otroused; 
+				    $_SESSION['otroreststock'] = $otroreststock;				    				    
+				    $otrostock = $otroaddstock - $otroreststock;
+				    $_SESSION['otrostock'] = $otroaddstock - $otroreststock;	
+
+
+			echo"<tr align=center><td>".$otrofecha."</td><td>".$otrodesp."</td>
+			<td align=left>".$otrobuy."</td><td align=left>".$otroused."</td><td align=left>".$otrostock."</td>
+			<td align=left>".$otrocuenta."</td><td align=left>".$otroegreso."</td><td align=left>".$otrosuma."</td>
+			<td><a href='editotro.php?otroid=".$otroid."'><img src='img/pencil.png' width='14' height=14'></a>
+			|<a href='eliminarotro.php?otroid=".$otroid."'><img src='img/trash.png' width='14' height=14'></a>
+			</td>
+			</tr>";				
+		}
+	//Anadir un registro
+			echo"
+				<tr align=center>
+					<form action='newotro.php' method = 'POST'>
+					<td><input type='date' name='otrofecha' value='' size=8></td>
+					<td  align=center><input type='text' name='otrodescripcion' value='' size=15></td>
+					<td  align=left><input type='text' name='otrobuy' value='' size=10></td>
+					<td></td><td></td>
+					<td  align=left><select name=otrocuenta>
+						<option>-----Select-----</option>
+						<option value='10'>Caja Chica</option>
+						<option value='11'>Caja de Ahorro Banco</option>
+    			    	<option>----------</option>
+    			    	</select>
+    			    </td>
+					<td align=left><input type='text' name='otroegreso' value='' size=7></td>
+					<td></td>
+					<td><p></p><input type='image' src='img/add.png' width='14' height=14'/></td>
+					</form>
+				</tr>";
+	//Usar un registro
+			echo"
+				<tr align=center>
+					<form action='usedotro.php' method = 'POST'>
+					<td><input type='date' name='otrofecha' value='' size=8></td>
+					<td  align=center><input type='text' name='otrodescripcion' value='' size=15></td>
+					<td></td>
+					<td  align=left><input type='text' name='otroused' value='' size=10></td>
+					<td></td>
+    			    <td></td>	
+					<td></td>
+					<td></td>
+					<td><p></p><input type='image' src='img/cross.png' width='14' height=14'/></td>
+					</form>
 				</tr>";
 
 		//mysql_close($conexion);

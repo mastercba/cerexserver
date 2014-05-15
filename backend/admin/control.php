@@ -51,18 +51,34 @@
 	</div>
 	<br />
 	<ul class="tabrow"><!--- Tabs Menu -->
-		<li><a href="/cerexserver/backend/admin/admin.php">WEBPAGE</a></li>
-		<li><a href="/cerexserver/backend/admin/account.php">ACCOUNTING</a></li>
-		<li><a href="/cerexserver/backend/admin/production.php">PRODUCTION COST's</a></li>
-		<li class="selected"><a href="/cerexserver/backend/admin/control.php">PRODUCTION CONTROL</a></li>
+		<li><a href="/cerexserver/backend/admin/admin.php">WWW</a></li>
+		<li><a href="/cerexserver/backend/admin/account.php">BALANCE GENERAL</a></li>
+		<li><a href="/cerexserver/backend/admin/production.php">COSTOS de PRODUCCION</a></li>
+		<li class="selected"><a href="/cerexserver/backend/admin/control.php">PRODUCCION</a></li>
 	</ul>
 	<br />
 	
 <!-- MAIN CONTENT -->
 
+	<section>
+		<div id="columna_izq">
+			<table border=0 width=100%>	
+			</table>
+		</div>
+		<div id="columna_der">
+			<table border=0 width=100%>	
+			</table>
+		</div>
+		<div id="columna_izq">
+			<table border=0 width=100%>	
+			</table>
+		</div>
+		<div id="columna_der">
+			<table border=0 width=100%>	
+			</table>
+		</div>	
+	</section>
 
-
-	
 <!-- FOOTER -->
 	<div id="footer">
 		<p>Copyright 2014 &copy;<a href="http://www.quanticasoft.com/cerexserver">CEREX ANDINA</a>. All rights reserved.</p>

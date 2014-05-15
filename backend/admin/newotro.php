@@ -16,38 +16,36 @@
     }     
     // Everything below this point in the file is secured by the login system
 
-    // update 'lastvisit' date de la db
-  
-	//Crear variables
-
 	//Recupero variables
-		$lfecha = $_POST['luzfecha'];
-		$lperiodo = $_POST['luzperiodo'];	
-		$lconsumo = $_POST['luzconsumo'];
-		$lcuenta = $_POST['acccuenta'];
-		$legreso = $_POST['luzegreso'];
-		$lsuma	= $_SESSION['luzsuma'];
-		$sieteuno = 71;
+		$ofecha = $_POST['otrofecha'];
+		$odescripcion = $_POST['otrodescripcion'];	
+		$obuy = $_POST['otrobuy'];
+		$ocuenta = $_POST['otrocuenta'];
+		$oegreso = $_POST['otroegreso'];
+
+	//Crear variables
+		$osuma	= $_SESSION['otrosuma'];
+		$ostock = $_SESSION['otrostock'];
 
 	//Update chart of account
-        $result1 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$sieteuno."'", $conexion);    
+        $result1 = mysql_query("SELECT saldo FROM catalogo WHERE id='77'", $conexion);    
         $row1 = mysql_fetch_array($result1);
         $newsaldoa = $row1['saldo'];
-        $newsaldoa = $newsaldoa + $legreso;
+        $newsaldoa = $newsaldoa + $osuma;
 
-        $result2 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$lcuenta."'", $conexion);    
+        $result2 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$ocuenta."'", $conexion);    
         $row2 = mysql_fetch_array($result2);
         $newsaldode = $row2['saldo'];
-        $newsaldode = $newsaldode - $legreso;
+        $newsaldode = $newsaldode - $osuma;
 				
 				mysql_query("UPDATE catalogo SET saldo='".$newsaldode."'
-				WHERE id = '".$lcuenta."'");
+				WHERE id = '".$ocuenta."'");
 				mysql_query("UPDATE catalogo SET saldo='".$newsaldoa."'
-				WHERE id = '".$sieteuno."'");
+				WHERE id = '77'");	
 
-	
-		$result = mysql_query(("INSERT INTO luz (created_at, periodo, consumo, egreso, de_cuenta)
-		 VALUES('$lfecha','$lperiodo','$lconsumo','$legreso','$lcuenta')"), $conexion);
+
+		$result3 = mysql_query(("INSERT INTO otros (created_at, descripcion, cant_buy, cant_stock, egreso, de_cuenta)
+		 VALUES('$ofecha','$odescripcion','$obuy','$ostock','$oegreso','$ocuenta')"), $conexion);
 
 		echo '<meta HTTP-EQUIV="REFRESH" content="0; url=production.php">';
 

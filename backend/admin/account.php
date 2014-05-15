@@ -51,34 +51,91 @@
 	</div>
 	<br />
 	<ul class="tabrow"><!--- Tabs Menu -->
-		<li><a href="/cerexserver/backend/admin/admin.php">WEBPAGE</a></li>
-		<li class="selected"><a href="/cerexserver/backend/admin/account.php">ACCOUNTING</a></li>
-		<li><a href="/cerexserver/backend/admin/production.php">PRODUCTION COST's</a></li>
-		<li><a href="/cerexserver/backend/admin/control.php">PRODUCTION CONTROL</a></li>
+		<li><a href="/cerexserver/backend/admin/admin.php">WWW</a></li>
+		<li class="selected"><a href="/cerexserver/backend/admin/account.php">BALANCE GENERAL</a></li>
+		<li><a href="/cerexserver/backend/admin/production.php">COSTOS de PRODUCCION</a></li>
+		<li><a href="/cerexserver/backend/admin/control.php">PRODUCCION</a></li>
 	</ul>
 	<br />
 	
-	<!-- MAIN CONTENT -->
+<!-- MAIN CONTENT -->
 
+	<section>
 				<!-- Leo la base de datos - quick show -->
-					<?php 	$ccl_total = 118.00;	$cot_total = 500.50; $schedule_total = 330.00;$completed_total = 1000.02;$hrs_total = 265570;?>
+				<?php
+				    $result71 = mysql_query("SELECT saldo FROM catalogo WHERE id='10'", $conexion);    
+        			$row71 = mysql_fetch_array($result71);
+        			$cajach = $row71['saldo'];
+				    $result72 = mysql_query("SELECT saldo FROM catalogo WHERE id='11'", $conexion);    
+        			$row72 = mysql_fetch_array($result72);
+        			$cbanco = $row72['saldo'];
+				    $result73 = mysql_query("SELECT saldo FROM catalogo WHERE id='30'", $conexion);    
+        			$row73 = mysql_fetch_array($result73);
+        			$capital = $row73['saldo'];
+        			$result74 = mysql_query("SELECT saldo FROM catalogo WHERE id='50'", $conexion);    
+        			$row74 = mysql_fetch_array($result74);
+        			$ventas = $row74['saldo'];
+        			$result75 = mysql_query("SELECT saldo FROM catalogo WHERE id='20'", $conexion);    
+        			$row75 = mysql_fetch_array($result75);
+        			$pasivocp = $row75['saldo'];
+        			$result76 = mysql_query("SELECT saldo FROM catalogo WHERE id='21'", $conexion);    
+        			$row76 = mysql_fetch_array($result76);
+        			$pasivolp = $row76['saldo'];
+        			$result78 = mysql_query("SELECT saldo FROM catalogo WHERE id='12'", $conexion);    
+        			$row78 = mysql_fetch_array($result78);
+        			$util = $row78['saldo'];
+				?>
 				<!-- End - quick show -->
-	    <div class="wrapper_overview">
-	        <div class="events">
-	        	<nav>
-			  		<ul>
-						<li>A1.CajaChica<span class="badge"><?php echo" ".$completed_total." "; ?></span></li>
-						<li>A2.Banco<span class="badge green"><?php echo" ".$schedule_total." "; ?></span></li>
-						<li>A3.Utilidades Retenidas<span class="badge white"><?php echo" ".$schedule_total." "; ?></span></li>
-						<li>Total INGRESO(Bs.)<span class="badge yellow"><?php echo" ".$cot_total." "; ?></span></li>
-						<li>Total EGRESO(Bs.)<span class="badge red"><?php echo" ".$ccl_total." "; ?></span></li>
-						<li>TOTAL(Bs.)<span class="badge white"><?php echo" ".$hrs_total." "; ?></span></li>
-			   		</ul>
-			   	</nav>
+	    <div id="columna_izq_acc">
+		    <div class="wrapper_overview">
+		        <div class="events">
+		        	<nav>
+				  		<ul>
+							<li>Caja Chica<span class="badge"><?php echo" ".$cajach." "; ?></span></li>
+							<li>Cuenta Banco<span class="badge green"><?php echo" ".$cbanco." "; ?></span></li>
+							<li>Cuenta Capital<span class="badge white"><?php echo" ".$capital." "; ?></span></li>
+							<li>Ingresos Ventas<span class="badge yellow"><?php echo" ".$ventas." "; ?></span></li>
+							<li>Pasivo Corto Plazo<span class="badge red"><?php echo" ".$pasivocp." "; ?></span></li>
+							<li>Pasivo Largo Plazo<span class="badge red"><?php echo" ".$pasivolp." "; ?></span></li>
+							<li>Utilidades<span class="badge white"><?php echo" ".$util." "; ?></span></li>
+				   		</ul>
+				   	</nav>
+				</div>
 			</div>
 		</div>
+		<div id="columna_der_acc">
+			<table border=0 width=100%>	
+				<form action="change_curr_acc.php" method="POST" onChange="autoSubmit();">
+					<td>Cuenta(de):</td>
+						<td>
+						<?php
+						$result = mysql_query("SELECT * FROM catalogo order by id", $conexion);
+			
+						//declare the combo box
+						$rows = array();
+						$idx = 0;?>
+						<select name="name">
+							<option value="0"<?php if ($idx==0) echo 'selected="selected"';?>>all</option>;				
+						<?php
+						//list all of the other elements
+						while ($row = mysql_fetch_array($result)){
+						      $rows[$idx++] = array('value' => $row['id'], 'text' => $row['descripcion']);?>
+						<option value<?php echo"= ".$row['id']." ";?><?php if ($_SESSION['current_account']==$row['id']) echo 'selected="selected"';?>><?php echo" ".$row['id']." ".$row['descripcion']." ";?></option>
+						<?php
+						}
+						//close the combo box
+						echo "</select>";
+						?>
+						</td>
+						<td></td>
+						<td><input type='image' src='img/tick.png' width='14' height='14' /></td>
+					</td>
+				</form>
+			</table>
+		</div>
+	</section>
 
-
+<!-- Muestra la TABLA PRINCIPAL de Movimiento en las cuentas - DIARIO GENERAL -->
 
 	<section>
 		<div id="table_account">
@@ -87,110 +144,80 @@
 					<tr align=center>
 						<td><strong>ID</strong></td>
 						<td><strong>Date & Time</strong></td>
+						<td></td>
 						<td align=left><strong>Description</strong></td>
 						
-						<td><strong>Account OUT</strong></td>
-						<td><strong>Account IN</strong></td>
-						<td><strong>Income</strong></td>
-						<td><strong>Expense</strong></td>
-						<td><strong>Balance</strong></td>
-	
+						<td align=left><strong>Account</strong></td>
+						<!--<td><strong>Income</strong></td>-->
+						<!--<td><strong>Expense</strong></td>-->
+						<td><strong>Amount(Bs.)</strong></td>
 						<td><strong>Actions</strong></td>
 					</tr>
 <?php 
-		$result = mysql_query("SELECT * FROM account", $conexion);	
+		$result = mysql_query("SELECT * FROM account order by created_at", $conexion);	
 	
-		$accsaldo = 0;
 		while($row = mysql_fetch_array($result)){
 				    $accid = $row['id'];
 				    $accfecha = $row['created_at'];
 				    $accdetalle = $row['descripcion'];
-
-				    $accingresos = $row['ingreso'];
-				    $accegresos = $row['egreso'];
-				    //$accsaldo = $row['saldo'];
-				    
-				    $accsaldo = $accsaldo + ($row['ingreso'] - $row['egreso']);
+				    //$accingresos = $row['ingreso'];
+				    //$accegresos = $row['egreso'];
+				    $accsaldo = $row['saldo'];
+				    //$accsaldo = $accsaldo + ($row['ingreso'] - $row['egreso']);
 				    $acccuenta = $row['cuenta'];
+				    $acc_curr_cuenta = $row['curr_cuenta'];
 
+					
+				    $result20 = mysql_query("SELECT descripcion FROM catalogo WHERE id='".$accid."'", $conexion);    
+        			$row20 = mysql_fetch_array($result20);
+        			$acccuenta = $row20['descripcion'];
+        			
 
 			echo"<tr align=center><td>".$accid."</td><td>".$accfecha."</td>
-			<td align=left>".$accdetalle."</td><td align=left>".$acccuenta."</td>
+			<td align=left>".$acc_curr_cuenta."</td>
+			<td align=left>".$accdetalle."</td>
+
 			<td align=left>".$acccuenta."</td>
-			<td align=right>".$accingresos."</td><td align=right>".$accegresos."</td>
 			<td align=right>".$accsaldo."</td>
 
-			<td><a href='editacc.php?acid=".$accid."'><img src='img/pencil.png' width='14' height=14'></a>
+			<td><a href='editac.php?acid=".$accid."'><img src='img/pencil.png' width='14' height=14'></a>
 			|<a href='eliminaracc.php?acid=".$accid."'><img src='img/trash.png' width='14' height=14'></a>
 			</td>
 			</tr>";			
 		}
 	//Anadir un registro
+			$current_account = $_SESSION['current_account'];
 			echo"
 				<tr align=center>
 					<form action='newacc.php' method = 'POST'>
 					<td></td>
 					<td><input type='date' name='accfecha' value='' size=8></td>
+					<td>$current_account</td>
 					<td  align=left><input type='text' name='accdetalle' value='' size=45></td>
-
-					<td><select name=acccuenta>
-						<option>select</option>
-	    				<option>---------</option>
-	    				<option>A1-Caja Chica</option>
-	    				<option>A2-Banco</option>
-	    				<option>A3-Utilidades Retenidas</option>
-    			    	<option>---------------</option>
-    			    	<option>P1-Pasivo a Corto Plazo</option>
-    			    	<option>P2-Pasivo a Largo Plazo</option>
-    			    	<option>-----------------------</option>
-    			    	<option>C1-Capital Contable</option>
-    			    	<option>-------------------</option>
-    			    	<option>V1-Ingreso Ventas</option>
-    			    	<option>-----------------</option>
-						<option>T1-Costo de Produccion</option>
-						<option>-----------------</option>
-						<option>G1-Gasto de Venta</option>
-						<option>G2-Gastos Generales</option>
-						<option>-----------------</option>
-						<option>I1-Impuestos</option>
-						<option>------------</option>
-						<option>O1-Cuenta Deudora</option>
-						<option>O2-Cuenta Acreedora</option>
-    			    	</select></td>
-
-    			    <td><select name=acccuenta>
-						<option>select</option>
-	    				<option>---------</option>
-	    				<option>A1-Caja Chica</option>
-	    				<option>A2-Banco</option>
-	    				<option>A3-Utilidades Retenidas</option>
-    			    	<option>---------------</option>
-    			    	<option>P1-Pasivo a Corto Plazo</option>
-    			    	<option>P2-Pasivo a Largo Plazo</option>
-    			    	<option>-----------------------</option>
-    			    	<option>C1-Capital Contable</option>
-    			    	<option>-------------------</option>
-    			    	<option>V1-Ingreso Ventas</option>
-    			    	<option>-----------------</option>
-						<option>T1-Costo de Produccion</option>
-						<option>-----------------</option>
-						<option>G1-Gasto de Venta</option>
-						<option>G2-Gastos Generales</option>
-						<option>-----------------</option>
-						<option>I1-Impuestos</option>
-						<option>------------</option>
-						<option>O1-Cuenta Deudora</option>
-						<option>O2-Cuenta Acreedora</option>
-    			    	</select></td>	
-
-					<td align=right><input type='text' name='accingresos' value='' size=7></td>
-					<td align=right><input type='text' name='accegresos' value='' size=7></td>
-					<td></td>
-		
-					<td><p></p><input type='image' src='img/add.png' width='14' height=14'/></td>
+					<td  align=left><select name='acccuenta'>
+						<option>-----Select-----</option>
+						<option value='10'>Caja Chica</option>
+						<option value='11'>Caja de Ahorro Banco</option>
+						<option value='12'>Cuenta Ganacias Retenidas</option>
+						<option value='20'>Pasivo a Corto Plazo</option>
+						<option value='21'>Pasivo a Largo Plazo</option>
+						<option value='30'>Capital</option>
+						<option value='40'>Inversion</option>
+						<option value='50'>Ingreso Ventas</option>
+						<option value='60'>Gastos Generales Menores</option>
+						<option value='70'>Costos de Producción Menores</option>
+						<option value='71'>Energía Electrica</option>
+						<option value='72'>Suministro Agua</option>
+						<option value='73'>Semilla</option>
+						<option value='74'>Nutriente</option>
+						<option value='77'>Otros</option>
+    			    	<option>----------</option>
+    			    	</select>
+    			    </td>
+					<td align=right><input type='text' name='accsaldo' value='' size=7></td>
+					<td><p></p><input type='image' src='img/add.png' width='14' height='14'/></td>
 				</tr>";
 
-		mysql_close($conexion);
 ?>
 				</table>					
 			</center>			

@@ -228,6 +228,29 @@ div#footer {
 	overflow: scroll;
 }
 
+#columna_izq_acc{
+	display: inline-block;
+	font-size: 0.8em;
+	text-align: left;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	border-radius: 0.2em;
+
+	width: 800px;
+	height: 50px;}
+#columna_der_acc{	
+	display: inline-block;
+	font-size: 0.8em;
+	text-align: left;
+	width: 200px;
+	height: 50px;}
+#columna_izq_acc, #columna_der_acc
+{
+	display: inline-block;
+	vertical-align: top;
+}
+
+
 /* ========================================================
    Production
    ===================================================== */
@@ -242,6 +265,23 @@ div#footer {
 	transition: all 0.5s ease;
 	width: 1200px;
 	height: 150px;
+	overflow: scroll;
+}
+
+/* ========================================================
+   Control
+   ===================================================== */
+#table_telemetry{
+	font-size: 0.8em;
+
+	display: inline-block;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-radius: 0.2em;
+	box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 2px;
+	transition: all 0.5s ease;
+	width: 1200px;
+	height: 250px;
 	overflow: scroll;
 }
 
@@ -261,7 +301,7 @@ div#footer {
 	overflow: scroll;
 }
 /* ========================================================
-   Students
+   Control
    ===================================================== */
 #columna_izq{
 	display: inline-block;

@@ -18,32 +18,31 @@
   
 	//Crear variables	
 
-	$idagua = $_GET['aguid'];
-
-    $once = 72; 
+	$idventa = $_GET['veid'];
+    $once = 11; $cincuenta = 50;
     //Recupero el monto a sumar y restar
-        $result7 = mysql_query("SELECT * FROM agua WHERE id='".$idagua."'", $conexion);    
+        $result7 = mysql_query("SELECT * FROM products WHERE id='".$idventa."'", $conexion);    
         $row7 = mysql_fetch_array($result7);
-        $monto = $row7['egreso'];
-        $de = $row7['de_cuenta'];
+        $producto = $row7['precio']*$row7['cantidad'];
+
     //Update chart of account
         $result1 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$once."'", $conexion);    
         $row1 = mysql_fetch_array($result1);
         $newsaldoa = $row1['saldo'];
-        $newsaldoa = $newsaldoa - $monto;
+        $newsaldoa = $newsaldoa - $producto;
 
-        $result2 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$de."'", $conexion);    
+        $result2 = mysql_query("SELECT saldo FROM catalogo WHERE id='".$cincuenta."'", $conexion);    
         $row2 = mysql_fetch_array($result2);
         $newsaldode = $row2['saldo'];
-        $newsaldode = $newsaldode + $monto;
-                
+        $newsaldode = $newsaldode - $producto;
+
                 mysql_query("UPDATE catalogo SET saldo='".$newsaldode."'
-                WHERE id = '".$de."' ");
+                WHERE id = '".$cincuenta."' ");
                 mysql_query("UPDATE catalogo SET saldo='".$newsaldoa."'
                 WHERE id = '".$once."'");
 
-    //Borro fila de agua    
-		$result = mysql_query("DELETE FROM agua WHERE id='".$idagua."'", $conexion);
+    //Borro fila de account
+		$result = mysql_query("DELETE FROM products WHERE id='".$idventa."'", $conexion);
 
 		echo '<meta HTTP-EQUIV="REFRESH" content="0; url=production.php">';
 

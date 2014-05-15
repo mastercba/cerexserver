@@ -1,4 +1,132 @@
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+		mysql_query("UPDATE units_asigned SET status_unit='".$estado."'
+		WHERE idstudent=".$addeidstudent." AND idunit=".$addunit."");
+/////////////////////////////////////////////////////////////////////////////////////////////////
+$query = "select * from units_asigned where idstudent = $filter_student AND status_unit = 0 order by id
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+					<td>
+						<?php
+						$result = mysql_query('SELECT * FROM catalogo order by id', $conexion);
+						
+						$rows = array();
+						$idx = 0;?>
+
+						<select name='name'>
+  						<?php
+  							while ($row = mysql_fetch_array($result)){?>
+  								<option value='volvo'>V1</option>
+							    <?php $rows[$idx++] = array('value' => $row['id'], 'text' => $row['descripcion']);?>
+
+								<option value<?php echo'= '.$row['id'].' ';?>
+								<?php if ($_SESSION['current_account']==$row['id']) echo 'selected="selected"';?>
+								>
+								<?php echo" ".$row['id']." ".$row['descripcion']." ";?></option>
+
+  							<?}?>	
+						</select>
+					</td>
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+this code is working........... mayo 8 2014
+			<table border=0 width=100%>	
+				<form action="change_curr_acc.php" method="POST">
+			
+						<td>Cuenta:</td>
+						<td>
+							<?php
+							$result = mysql_query("SELECT * FROM catalogo order by id", $conexion);
+			
+							//declare the combo box
+							$rows = array();
+							$idx = 0;?>
+							<select name="name">
+								<option value="0"<?php if ($idx==0) echo 'selected="selected"';?>>all</option>;				
+							<?php
+							//list all of the other elements
+							while ($row = mysql_fetch_array($result)){
+							      $rows[$idx++] = array('value' => $row['id'], 'text' => $row['descripcion']);?>
+							<option value<?php echo"= ".$row['id']." ";?><?php if ($_SESSION['current_account']==$row['id']) echo 'selected="selected"';?>><?php echo" ".$row['id']." ".$row['descripcion']." ";?></option>
+							<?php
+							}
+							//close the combo box
+							echo "</select>";
+							?>
+							<td></td>
+							<td><input type='image' src='img/tick.png' width='14' height='14' /></td>
+
+						</td>
+				</form>			
+			</table>			
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+select llena de la base de datos
+
+
+			<td>
+				<form action="filter.php" method="POST">
+			
+			<td>Student:</td>
+			<td>
+						<?php
+						$con = mysql_connect("localhost","quantid0_marco","~marco");
+						if (!$con)  {
+						    die('Could not connect: ' . mysql_error());
+						}
+						mysql_select_db("quantid0_fluent",$con);
+						$query = "select * from students where asig = $teacherid order by apellido";//$teacherid
+						$result = mysql_query($query);
+		
+						//declare the combo box
+						$rows = array();
+						$idx = 0;?>
+						<select name="name">
+							<option value="0"<?php if ($idx==0) echo 'selected="selected"';?>>all</option>;				
+						<?php
+						//list all of the other elements
+						while ($row = mysql_fetch_array($result)){
+						      $rows[$idx++] = array('value' => $row['id'], 'text' => $row['apellido']);?>
+						<option value<?php echo"= ".$row['id']." ";?><?php if ($filter_student==$row['id']) echo 'selected="selected"';?>><?php echo" ".$row['nombre']." ".$row['apellido']." ";?></option>
+						<?php
+						}
+						//close the combo box
+						echo "</select>";
+						//close db
+						mysql_close($con);
+						?>
+					</td><td></td><td><input type='image' src='../images/tick.png' width='14' height='14' /></td>
+				</form>			
+			</td>
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php 
 	session_start();
 
