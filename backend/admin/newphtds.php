@@ -29,7 +29,7 @@
 
 	//Update table:phtds
 	
-		$result = mysql_query(("INSERT INTO phtds (fecha, pham, phpm, tdsam, tdspm)
+		$result = mysql_query(("INSERT INTO phtdsm1 (fecha, pham, phpm, tdsam, tdspm)
 		 VALUES('$lfechaleida','$lph_am','$lph_pm','$ltds_am','$ltds_pm')"), $conexion);
 
 		echo '<meta HTTP-EQUIV="REFRESH" content="0; url=control.php">';

@@ -284,7 +284,7 @@
 					<td><strong>Actions</strong></td>
 				</tr>
 				<?php 
-				$resultphtds = mysql_query("SELECT * FROM phtds order by fecha", $conexion);	
+				$resultphtds = mysql_query("SELECT * FROM phtdsm1 order by fecha", $conexion);	
 				while($row = mysql_fetch_array($resultphtds)){
 				    $phtdsID = $row['id'];					
 				    $fechaRD = $row['fecha'];

@@ -21,7 +21,7 @@
 	$phtdsid = $_GET['phid'];
 
     //Borro fila de account
-        $result = mysql_query("DELETE FROM phtds WHERE id='".$phtdsid."'", $conexion);
+        $result = mysql_query("DELETE FROM phtdsm1 WHERE id='".$phtdsid."'", $conexion);
     
 
 		echo '<meta HTTP-EQUIV="REFRESH" content="0; url=control.php">';
