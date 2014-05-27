@@ -190,7 +190,7 @@ div#footer {
 	box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 2px;
 	transition: all 0.5s ease;
 	width: 400px;
-	height: 400px;
+	height: 100px;
 	overflow: scroll;
 }
 
@@ -224,7 +224,7 @@ div#footer {
 	box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 2px;
 	transition: all 0.5s ease;
 	width: 1200px;
-	height: 400px;
+	height: 500px;
 	overflow: scroll;
 }
 
@@ -236,7 +236,7 @@ div#footer {
 	border-left: 1px solid #fff;
 	border-radius: 0.2em;
 
-	width: 800px;
+	width: 900px;
 	height: 50px;}
 #columna_der_acc{	
 	display: inline-block;
@@ -267,7 +267,23 @@ div#footer {
 	height: 150px;
 	overflow: scroll;
 }
+/* ========================================================
+   PH
+   ===================================================== */
+#table_ph{
+	font-size: 1.0em;
 
+	text-align: center;
+	display: inline-block;
+	border-top: 0px solid #ddd;
+	border-left: 0px solid #ddd;
+	border-radius: 0.2em;
+	box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 0px;
+	transition: all 0.5s ease;
+	width: 1200px;
+	height: 300px;
+	overflow: scroll;
+}
 /* ========================================================
    Control
    ===================================================== */
@@ -301,30 +317,72 @@ div#footer {
 	overflow: scroll;
 }
 /* ========================================================
+   Overview
+   ===================================================== */
+#col_catalogo{
+	text-align: center;
+	display: inline-block;
+	font-size: 1.0em;
+	text-align: left;
+	border-top: 0px solid #ddd;
+	border-left: 0px solid #ddd;
+	/*border-right: 1px solid #ddd;*/
+	border-radius: 0.2em;
+	box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 0px;
+	transition: all 0.5s ease;
+	width: 1200px;
+	height: 120px;
+}
+/* ========================================================
    Control
    ===================================================== */
+#columna{
+	text-align: center;
+	display: inline-block;
+	font-size: 1.0em;
+	text-align: left;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	/*border-right: 1px solid #ddd;*/
+	border-radius: 0.2em;
+	box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 1px;
+	transition: all 0.5s ease;
+	width: 1200px;
+	height: 120px;}   
+#columna1{
+	text-align: center;
+	display: inline-block;
+	font-size: 1.0em;
+	text-align: left;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-radius: 0.2em;
+	box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 1px;
+	transition: all 0.5s ease;
+	width: 1200px;
+	height: 120px;} 	
 #columna_izq{
 	display: inline-block;
 	font-size: 0.8em;
 	text-align: left;
-	border-top: 1px solid #ddd;
-	border-left: 1px solid #ddd;
+	border-top: 0px solid #ddd;
+	border-left: 0px solid #ddd;
 	border-radius: 0.2em;
-	box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 2px;
+	box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 0px;
 	transition: all 0.5s ease;
-	width: 500px;
-	height: 200px;}
+	width: 600px;
+	height: 300px;}
 #columna_der{	
 	display: inline-block;
 	font-size: 0.8em;
 	text-align: left;
-	border-top: 1px solid #ddd;
-	border-left: 1px solid #ddd;
+	border-top: 0px solid #ddd;
+	border-left: 0px solid #ddd;
 	border-radius: 0.2em;
-	box-shadow: rgba(0, 0, 0, 0.7) 1px 1px 2px;
+	box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 0px;
 	transition: all 0.5s ease;
-	width: 500px;
-	height: 200px;}
+	width: 600px;
+	height: 300px;}
 #columna_izq, #columna_der
 {
 	display: inline-block;
@@ -334,13 +392,6 @@ div#footer {
 .titul{padding: 0.5em 0 1.5em 1.5em;}
 
 .subtitul{padding: 0.5em 0 0.5em 3em;}
-
-/*// cellpadding
-tr, td { padding: 1px; }*/
-
-
-
-
 
 
 /* events overview - quick show

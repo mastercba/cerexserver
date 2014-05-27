@@ -1,3 +1,32 @@
+/////////////////////////////////////////////////////////////////////////////////
+	//$ainicio = date('Y-m-j'); lee la fecha actual 
+	$afinal = strtotime ( '+'.$ca.' day' , strtotime ( $ainicio ) ) ;
+	$afinal = date ( 'Y-m-j' , $afinal );
+	mysql_query("UPDATE produccionm1 SET afinal= '".$afinal."' WHERE id = '1'");
+//////////////////////////////////////////////////////////////////////////////////
+							  	<td><input type="checkbox" name="a1" value="1"
+							  		<?php if ($a1==1) echo"checked";?>>
+							  	</td>
+
+
+
+					<td align=left>Puesta Almacigo (3-5)</td>
+					<td align=left>Germinacion</td>
+					<?php
+					for($x=1; $x<=3; $x++) {
+						echo"<tr align=center>
+							<form action='save.php' method='POST'>
+
+
+								<td>1</td><td>3</td><td>6</td><td>7</td>
+								<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+								<td></td><td></td><td></td><td></td>
+							</form>
+						</tr>";	    
+					}?>
+					<td align=left><?.$ainicio.?></td><td align=left><?.$afinal.?></td>
+					<?
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 		mysql_query("UPDATE units_asigned SET status_unit='".$estado."'

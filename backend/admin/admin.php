@@ -51,7 +51,7 @@
 	</div>
 	<br />
 	<ul class="tabrow"><!--- Tabs Menu -->
-		<li class="selected"><a href="/cerexserver/backend/admin/admin.php">WWW</a></li>
+		<li class="selected"><a href="/cerexserver/backend/admin/admin.php">OVERVIEW</a></li>
 		<li><a href="/cerexserver/backend/admin/account.php">BALANCE GENERAL</a></li>
 		<li><a href="/cerexserver/backend/admin/production.php">COSTOS de PRODUCCION</a></li>
 		<li><a href="/cerexserver/backend/admin/control.php">PRODUCCION</a></li>		
@@ -60,6 +60,97 @@
 	
 	<!-- MAIN CONTENT -->
 	<section>
+				<!-- Leo la base de datos - quick show -->
+				<?php
+				    $result1 = mysql_query("SELECT saldo FROM catalogo WHERE id='10'", $conexion);    
+        			$row1 = mysql_fetch_array($result1);
+        			$cach = $row1['saldo'];
+				    $result2 = mysql_query("SELECT saldo FROM catalogo WHERE id='11'", $conexion);    
+        			$row2 = mysql_fetch_array($result2);
+        			$cuba = $row2['saldo'];
+				    $result3 = mysql_query("SELECT saldo FROM catalogo WHERE id='12'", $conexion);    
+        			$row3 = mysql_fetch_array($result3);
+        			$gare = $row3['saldo'];
+        			$result4 = mysql_query("SELECT saldo FROM catalogo WHERE id='20'", $conexion);    
+        			$row4 = mysql_fetch_array($result4);
+        			$copl = $row4['saldo'];
+        			$result5 = mysql_query("SELECT saldo FROM catalogo WHERE id='21'", $conexion);    
+        			$row5 = mysql_fetch_array($result5);
+        			$lapl = $row5['saldo'];
+        			$result6 = mysql_query("SELECT saldo FROM catalogo WHERE id='30'", $conexion);    
+        			$row6 = mysql_fetch_array($result6);
+        			$cuca = $row6['saldo'];
+        			$result7 = mysql_query("SELECT saldo FROM catalogo WHERE id='40'", $conexion);    
+        			$row7 = mysql_fetch_array($result7);
+        			$inv = $row7['saldo'];
+        			$result8 = mysql_query("SELECT saldo FROM catalogo WHERE id='50'", $conexion);    
+        			$row8 = mysql_fetch_array($result8);
+        			$inve = $row8['saldo'];
+        			$result9 = mysql_query("SELECT saldo FROM catalogo WHERE id='60'", $conexion);    
+        			$row9 = mysql_fetch_array($result9);
+        			$gage = $row9['saldo'];
+        			$result10 = mysql_query("SELECT saldo FROM catalogo WHERE id='70'", $conexion);    
+        			$row10 = mysql_fetch_array($result10);
+        			$copr = $row10['saldo'];
+        			$result11 = mysql_query("SELECT saldo FROM catalogo WHERE id='71'", $conexion);    
+        			$row11 = mysql_fetch_array($result11);
+        			$enel = $row11['saldo'];
+        			$result12 = mysql_query("SELECT saldo FROM catalogo WHERE id='72'", $conexion);    
+        			$row12 = mysql_fetch_array($result12);
+        			$suag = $row12['saldo'];
+        			$result13 = mysql_query("SELECT saldo FROM catalogo WHERE id='73'", $conexion);    
+        			$row13 = mysql_fetch_array($result13);
+        			$semi = $row13['saldo'];
+        			$result14 = mysql_query("SELECT saldo FROM catalogo WHERE id='74'", $conexion);    
+        			$row14 = mysql_fetch_array($result14);
+        			$nutr = $row14['saldo'];
+        			$result15 = mysql_query("SELECT saldo FROM catalogo WHERE id='77'", $conexion);    
+        			$row15 = mysql_fetch_array($result15);
+        			$otro = $row15['saldo'];
+				?>
+		<div id="col_catalogo">		
+			<div class="wrapper_overview">
+			    <div class="events">
+			       	<nav>
+				  		<ul>
+							<li>Caja Chica<span class="badge"><?php echo" ".$cach." "; ?></span></li>
+							<li>Caja Ahorro Banco<span class="badge green"><?php echo" ".$cuba." "; ?></span></li>
+							<li>Cuenta Ganancias Retenidas<span class="badge green"><?php echo" ".$gare." "; ?></span></li>
+							<li>Pasivo a Corto Plazo<span class="badge green"><?php echo" ".$copl." "; ?></span></li>
+							<li>Pasivo a Largo Plazo<span class="badge green"><?php echo" ".$lapl." "; ?></span></li>
+							<li>Cuenta Capital<span class="badge white"><?php echo" ".$cuca." "; ?></span></li>
+							<li>Inversion<span class="badge green"><?php echo" ".$inv." "; ?></span></li>
+							<li>Ingresos Ventas<span class="badge yellow"><?php echo" ".$inve." "; ?></span></li>
+							<br /><br />
+							<li>Gastos Generales Menores<span class="badge red"><?php echo" ".$gage." "; ?></span></li>
+							<li>Costos de Produccion Menores<span class="badge red"><?php echo" ".$copr." "; ?></span></li>
+							<li>Energia Electrica<span class="badge white"><?php echo" ".$enel." "; ?></span></li>
+							<li>Suministro Agua<span class="badge white"><?php echo" ".$suag." "; ?></span></li>
+							<li>Semilla insumo<span class="badge white"><?php echo" ".$semi." "; ?></span></li>
+							<li>Nutriente insumo<span class="badge white"><?php echo" ".$nutr." "; ?></span></li>
+							<li>Otros Produccion<span class="badge white"><?php echo" ".$otro." "; ?></span></li>
+				   		</ul>
+				   	</nav>
+				</div>
+			</div>
+		</div>		
+		<div id="columna_izq">
+			<table border=0 width=100%>
+				<tr align=center>
+					<td align=left><strong><u>TELEMETRIA</u></strong></td>
+					<tr></tr>
+				</tr>	
+			</table>
+		</div>
+		<div id="columna_der">
+			<table border=0 width=100%>
+				<tr align=center>
+					<td align=left><strong><u>PRODUCCION</u></strong></td>
+					<tr></tr>
+				</tr>				
+			</table>
+		</div>
+		<br /><br />
 		<div id="table_web_stats">
 			<center>					
 				<table border=0 width=100%>					
@@ -91,8 +182,7 @@
 ?>
 				</table>					
 			</center>			
-		</div> <!-- end content -->
-	<br /><br />
+		</div> <!-- end content -->			
 	</section>
 	
 <!-- FOOTER -->

@@ -45,8 +45,8 @@
 		</div>        
 	</div>
 	<div id="logo"><!--<logo>-->
-		<a style="text-decoration: none; margin-left: 12px;" href="http://http://www.quanticasoft.com/cerexserver/formlogin.html" title="CEREX Andina">
-		    <img style="margin-top: 2px;" height="39" src="/cerexserver/backend/admin/img/logo.png" alt="CEREX Andina" />
+		<a style="text-decoration: none; margin-left: 12px;" href="http://www.fluentspeaking.com" title="FluentSpeaking">
+		    <img style="margin-top: 2px;" height="39" src="/cerexserver/backend/admin/img/logo.png" alt="Fluent Speaking" />
 		</a>
 	</div>
 	<br />
@@ -61,8 +61,8 @@
 <!-- MAIN CONTENT -->
 	<!-- leo base de datos -->
 	<?php 
-	$result4 = mysql_query("SELECT * FROM produccionm1", $conexion);	
-	while($row = mysql_fetch_array($result4)){
+	$result48 = mysql_query("SELECT * FROM produccionm1", $conexion);	
+	while($row = mysql_fetch_array($result48)){
 		$inicio = $row['inicio'];$final = $row['final'];$ainicio = $row['ainicio'];
 		$afinal = $row['afinal'];$a[1] = $row['a1'];$a[2] = $row['a2'];
 		$a[3] = $row['a3'];$a[4] = $row['a4'];$a[5] = $row['a5'];
@@ -95,7 +95,7 @@
 
 	<!-- calculo las fechas finales -->
 		<?php
-			//$ainicio = date('Y-m-j');
+			//$ainicio = date('Y-m-j'); lee la fecha actual 
 			$afinal = strtotime ( '+'.$ca.' day' , strtotime ( $ainicio ) ) ;
 			$afinal = date ( 'Y-m-j' , $afinal );
 			mysql_query("UPDATE produccionm1 SET afinal= '".$afinal."' WHERE id = '1'");
@@ -119,11 +119,9 @@
 	<!-- linea de control -->
 	<center>
 		<table>			
-			<td>
-				<!--<td> | </td><td>  Inicio Actividades:</td><td><?=$inicio?></td>
-				<td> | </td><td>  Final Actividades:</td><td><?=$final?></td>-->
-				<td> | </td><td><a href="editcont.php" ><img src="/cerexserver/backend/admin/img/pencil.png" width="24" height="24"/></a></td>
-				<td> | </td>					
+			<td><td> | </td>
+				<td></td><td><button form="form1"><img src="/cerexserver/backend/admin/img/save4.jpg" width="24" height="24"/></button></td>
+				<td></td><td> | </td>					
 			</td> 
 		</table>
 	</center>
@@ -159,40 +157,46 @@
 					<td><strong>20</strong></td>
 					<td align=center><strong>Inicio</strong></td>
 					<td align=center><strong>Fin</strong></td>
-					<td align=center><strong>Dias</strong></td>
 				</tr>	
 				<tr align=center>
-					<form action='demo_form.php' method='POST'>
+					<form action='saveControl.php' method='POST' id="form1">
 					  <td align=left>Puesta Almacigo (3-5)</td>
 					  <td align=left>Germinacion</td>
-					  <?php
-					  for ($x=1; $x<=5; $x++) {
-					  		If($a[$x]==1){
-					  			echo "<td align=center><img src='/cerexserver/backend/admin/img/tick.png' width='14' height='14'/></td>";
-					  		}else{
-					  			echo "<td></td>";
-					  		}
-					  }?>
+					  <td><input type="checkbox" name="a1" value=""<?php if ($a[1]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="a2" value=""<?php if ($a[2]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="a3" value=""<?php if ($a[3]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="a4" value=""<?php if ($a[4]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="a5" value=""<?php if ($a[5]==1){echo"checked";}else{}?>></td>
 					  <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 					  <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 					  <td></td>
-					  <td align=center><?=$ainicio?></td><td align=center><?=$afinal?></td>
-					  <td align=center><?=$ca?></td>
+					  <td align=center><input type='date' name='ainicio_new' value<?php echo'= '.$ainicio.' ';?>></td>
+					  <td><?=$afinal?></td>
 
 					  <tr></tr>
 					  <td align=left>Trasplante (16-20)</td>
 					  <td align=left>plantas con 6a8 hojas</td>
-					  <?php
-					  for ($x=1; $x<=20; $x++) {
-					  		If($b[$x]==1){
-					  			echo "<td align=center><img src='/cerexserver/backend/admin/img/tick.png' width='14' height='14'/></td>";
-					  		}else{
-					  			echo "<td></td>";
-					  		}
-					  }?>
-					  <td align=center><?=$binicio?></td><td align=center><?=$bfinal?></td>					  					  					  					  					
-					  <td align=center><?=$cb?></td>
-					</form>
+					  <td><input type="checkbox" name="b1" value="1"<?php if ($b[1]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b2" value="1"<?php if ($b[2]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b3" value="1"<?php if ($b[3]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b4" value="1"<?php if ($b[4]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b5" value="1"<?php if ($b[5]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b6" value="1"<?php if ($b[6]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b7" value="1"<?php if ($b[7]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b8" value="1"<?php if ($b[8]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b9" value="1"<?php if ($b[9]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b10" value="1"<?php if ($b[10]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b11" value="1"<?php if ($b[11]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b12" value="1"<?php if ($b[12]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b13" value="1"<?php if ($b[13]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b14" value="1"<?php if ($b[14]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b15" value="1"<?php if ($b[15]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b16" value="1"<?php if ($b[16]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b17" value="1"<?php if ($b[17]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b18" value="1"<?php if ($b[18]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b19" value="1"<?php if ($b[19]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b20" value="1"<?php if ($b[20]==1){echo"checked";}else{}?>></td>
+  					  <td align=center><input type='date' name='binicio_new' value<?php echo'= '.$binicio.' ';?>></td>
 				</tr>
 			</table>
 		</div>
@@ -230,90 +234,52 @@
 					<td><strong>25</strong></td>
 					<td align=center><strong>Inicio</strong></td>
 					<td align=center><strong>Fin</strong></td>
-					<td align=center><strong>Dias</strong></td>
 				</tr>
 				<tr align=center>
-					<form action='demo_form.php' method='POST'>
 					  <td align=left>Madurez(20-25)</td>
-					  <td align=left>BuenFollaje y tamano</td>
-					  <?php
-					  for ($x=1; $x<=25; $x++) {
-					  		If($c[$x]==1){
-					  			echo "<td><img src='/cerexserver/backend/admin/img/tick.png' width='14' height='14'/></td>";
-					  		}else{
-					  			echo "<td></td>";
-					  		}
-					  }?>					  
-					  <td align=left><?=$cinicio?></td><td align=left><?=$cfinal?></td>
-					  <td align=center><?=$cc?></td>
-
+					  <td align=left>Follaje y tamano</td>
+					  <td><input type="checkbox" name="c1" value="1"<?php if ($c[1]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c2" value="1"<?php if ($c[2]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c3" value="1"<?php if ($c[3]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c4" value="1"<?php if ($c[4]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c5" value="1"<?php if ($c[5]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c6" value="1"<?php if ($c[6]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c7" value="1"<?php if ($c[7]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c8" value="1"<?php if ($c[8]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c9" value="1"<?php if ($c[9]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c10" value="1"<?php if ($c[10]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c11" value="1"<?php if ($c[11]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c12" value="1"<?php if ($c[12]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c13" value="1"<?php if ($c[13]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c14" value="1"<?php if ($c[14]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c15" value="1"<?php if ($c[15]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c16" value="1"<?php if ($c[16]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c17" value="1"<?php if ($c[17]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c18" value="1"<?php if ($c[18]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c19" value="1"<?php if ($c[19]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c20" value="1"<?php if ($c[20]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c21" value="1"<?php if ($c[16]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c22" value="1"<?php if ($c[17]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c23" value="1"<?php if ($c[18]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c24" value="1"<?php if ($c[19]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c25" value="1"<?php if ($c[20]==1){echo"checked";}else{}?>></td>
+					  <td align=center><input type='date' name='cinicio_new' value<?php echo'= '.$cinicio.' ';?>></td>
 					  <tr></tr>
 					  <td align=left>Cosecha (5)</td>
 					  <td align=left>Follaje peso 100gr y tamano</td>
-					  <?php
-					  for ($x=1; $x<=5; $x++) {
-					  		If($d[$x]==1){
-					  			echo "<td><img src='/cerexserver/backend/admin/img/tick.png' width='14' height='14'/></td>";
-					  		}else{
-					  			echo "<td></td>";
-					  		}
-					  }?>
+					  <td><input type="checkbox" name="d1" value="1"<?php if ($d[1]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="d2" value="1"<?php if ($d[2]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="d3" value="1"<?php if ($d[3]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="d4" value="1"<?php if ($d[4]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="d5" value="1"<?php if ($d[5]==1){echo"checked";}else{}?>></td>
 					  <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 					  <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 					  <td></td><td></td><td></td><td></td><td></td><td></td>
-					  <td align=left><?=$dinicio?></td><td align=left><?=$dfinal?></td>					  					  					  					  					
-					  <td align=center><?=$cd?></td>
+  					  <td align=center><input type='date' name='dinicio_new' value<?php echo'= '.$dinicio.' ';?>></td>
 					</form>
 				</tr>
 
 			</table> <br/>
-		</div>
-		<br/><br/>
-		<div id="table_ph">
-				<td align=center><strong><u>Sistema de Control de PH y TDS</u></strong></td><tr></tr>
-				<br/>
-				<td><strong>Rango PH:5.5-6.5; rango TDS:1200ppm-1500ppm</strong></td>
-				<br/>
-			<table border=0 width=100%>					
-				<tr align=center>
-					<td><strong>Fecha</strong></td>
-					<td><strong>PH am</strong></td>
-					<td><strong>PH pm</strong></td>
-					<td><strong>TDS am</strong></td>
-					<td><strong>TDS pm</strong></td>
-					<td><strong>Actions</strong></td>
-				</tr>
-				<?php 
-				$resultphtds = mysql_query("SELECT * FROM phtds order by fecha", $conexion);	
-				while($row = mysql_fetch_array($resultphtds)){
-				    $phtdsID = $row['id'];					
-				    $fechaRD = $row['fecha'];
-   				    $phAM = $row['pham'];
-				    $phPM = $row['phpm'];
-				    $tdsAM = $row['tdsam'];
-				    $tdsPM = $row['tdspm'];
-
-					echo"<tr align=center><td>".$fechaRD."</td>
-					<td>".$phAM."</td><td>".$phPM."</td>
-					<td>".$tdsAM."</td><td>".$tdsPM."</td>
-					<td><a href='eliminarphtds.php?phid=".$phtdsID."'><img src='img/trash.png' width='14' height=14'></a>
-					</td>
-					</tr>";			
-				}
-				//Anadir un registro
-					echo"
-						<tr align=center>
-							<form action='newphtds.php' method = 'POST'>
-							<td><input type='date' name='fechaleida' value='' size=8></td>
-							<td align=center><input type='text' name='ph_am' value='' size=3></td>
-							<td align=center><input type='text' name='ph_pm' value='' size=3></td>
-							<td align=center><input type='text' name='tds_am' value='' size=3></td>
-							<td align=center><input type='text' name='tds_pm' value='' size=3></td>
-							<td><p></p><input type='image' src='img/add.png' width='14' height=14'/></td>
-							</form>
-						</tr>";
-				?>
-			</table>											
 		</div>			
 	</section>
 
