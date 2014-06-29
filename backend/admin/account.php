@@ -86,7 +86,7 @@
         			$util = $row78['saldo'];
 				?>
 				<!-- End - quick show -->
-	    <div id="columna_izq_acc">
+	    <div id="columna_acc">
 		    <div class="wrapper_overview">
 		        <div class="events">
 		        	<nav>
@@ -103,7 +103,8 @@
 				</div>
 			</div>
 		</div>
-		<div id="columna_der_acc">
+		<br/>
+		<div id="columna_izq_acc">
 			<table border=0 width=100%>	
 				<form action="change_curr_acc.php" method="POST" onChange="autoSubmit();">
 					<td>Cuenta(de):</td>
@@ -131,7 +132,10 @@
 						<td><input type='image' src='img/tick.png' width='14' height='14' /></td>
 					</td>
 				</form>
-			</table>
+			</table>			
+		</div>
+		<div id="columna_der_acc">
+
 		</div>
 	</section>
 
@@ -143,15 +147,15 @@
 				<table border=0 width=100%>					
 					<tr align=center>
 						<td><strong>ID</strong></td>
-						<td><strong>Date & Time</strong></td>
+						<td><strong>Fecha</strong></td>
 						<td></td>
-						<td align=left><strong>Description</strong></td>
+						<td align=left><strong>Descripcion</strong></td>
 						
-						<td align=left><strong>Account</strong></td>
+						<td align=left><strong>Cuenta</strong></td>
 						<!--<td><strong>Income</strong></td>-->
 						<!--<td><strong>Expense</strong></td>-->
-						<td><strong>Amount(Bs.)</strong></td>
-						<td><strong>Actions</strong></td>
+						<td><strong>Monto(Bs.)</strong></td>
+						<td><strong>Acciones</strong></td>
 					</tr>
 <?php 
 		$result = mysql_query("SELECT * FROM account order by created_at", $conexion);	
@@ -168,7 +172,7 @@
 				    $acc_curr_cuenta = $row['curr_cuenta'];
 
 					
-				    $result20 = mysql_query("SELECT descripcion FROM catalogo WHERE id='".$accid."'", $conexion);    
+				    $result20 = mysql_query("SELECT * FROM catalogo WHERE id='".$acccuenta."'", $conexion);    
         			$row20 = mysql_fetch_array($result20);
         			$acccuenta = $row20['descripcion'];
         			
@@ -180,7 +184,7 @@
 			<td align=left>".$acccuenta."</td>
 			<td align=right>".$accsaldo."</td>
 
-			<td><a href='editac.php?acid=".$accid."'><img src='img/pencil.png' width='14' height=14'></a>
+			<td><a href='#?acid=".$accid."'><img src='img/pencil.png' width='14' height=14'></a>
 			|<a href='eliminaracc.php?acid=".$accid."'><img src='img/trash.png' width='14' height=14'></a>
 			</td>
 			</tr>";			
@@ -196,21 +200,21 @@
 					<td  align=left><input type='text' name='accdetalle' value='' size=45></td>
 					<td  align=left><select name='acccuenta'>
 						<option>-----Select-----</option>
-						<option value='10'>Caja Chica</option>
-						<option value='11'>Caja de Ahorro Banco</option>
-						<option value='12'>Cuenta Ganacias Retenidas</option>
-						<option value='20'>Pasivo a Corto Plazo</option>
-						<option value='21'>Pasivo a Largo Plazo</option>
-						<option value='30'>Capital</option>
-						<option value='40'>Inversion</option>
-						<option value='50'>Ingreso Ventas</option>
-						<option value='60'>Gastos Generales Menores</option>
-						<option value='70'>Costos de Producción Menores</option>
-						<option value='71'>Energía Electrica</option>
-						<option value='72'>Suministro Agua</option>
-						<option value='73'>Semilla</option>
-						<option value='74'>Nutriente</option>
-						<option value='77'>Otros</option>
+						<option value='10'>10-Caja Chica</option>
+						<option value='11'>11-Caja de Ahorro Banco</option>
+						<option value='12'>12-Cuenta Ganacias Retenidas</option>
+						<option value='20'>20-Pasivo a Corto Plazo</option>
+						<option value='21'>21-Pasivo a Largo Plazo</option>
+						<option value='30'>30-Capital</option>
+						<option value='40'>40-Inversion</option>
+						<option value='50'>50-Ingreso Ventas</option>
+						<option value='60'>60-Gastos Generales Menores</option>
+						<option value='70'>70-Costos de Producción Menores</option>
+						<option value='71'>71-Energía Electrica</option>
+						<option value='72'>72-Suministro Agua</option>
+						<option value='73'>73-Semilla</option>
+						<option value='74'>74-Nutriente</option>
+						<option value='77'>77-Otros</option>
     			    	<option>----------</option>
     			    	</select>
     			    </td>

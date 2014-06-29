@@ -73,7 +73,10 @@
 		$b[11] = $row['b11'];$b[12] = $row['b12'];$b[13] = $row['b13'];
 		$b[14] = $row['b14'];$b[15] = $row['b15'];$b[16] = $row['b16'];
 		$b[17] = $row['b17'];$b[18] = $row['b18'];$b[19] = $row['b19'];
-		$b[20] = $row['b20'];$cinicio = $row['cinicio'];$cfinal = $row['cfinal'];
+		$b[20] = $row['b20'];
+		$b[21] = $row['b21'];$b[22] = $row['b22'];$b[23] = $row['b23'];
+		$b[24] = $row['b24'];$b[25] = $row['b25'];
+		$cinicio = $row['cinicio'];$cfinal = $row['cfinal'];
 		$c[1] = $row['c1'];$c[2] = $row['c2'];$c[3] = $row['c3'];$c[4] = $row['c4'];    
 		$c[5] = $row['c5'];$c[6] = $row['c6'];$c[7] = $row['c7'];$c[8] = $row['c8'];    
 		$c[9] = $row['c9'];$c[10] = $row['c10'];$c[11] = $row['c11'];$c[12] = $row['c12'];    
@@ -81,6 +84,8 @@
 		$c[17] = $row['c17'];$c[18] = $row['c18'];$c[19] = $row['c19'];$c[20] = $row['c20'];    
 		$c[21] = $row['c21'];$c[22] = $row['c22'];$c[23] = $row['c23'];$c[24] = $row['c24'];    
 		$c[25] = $row['c25'];
+		$c[26] = $row['c26'];$c[27] = $row['c27'];$c[28] = $row['c28'];$c[29] = $row['c29'];
+		$c[30] = $row['c30'];
 		$dinicio = $row['dinicio'];$dfinal = $row['dfinal'];$d[1] = $row['d1'];
 		$d[2] = $row['d2'];$d[3] = $row['d3'];$d[4] = $row['d4'];$d[5] = $row['d5'];    
 	}
@@ -89,8 +94,8 @@
 		<?php
 			$ca=0;$cb=0;$cc=0;$cd=0;
 			for ($x=1; $x<=5; $x++){If($a[$x]==1){$ca = $ca + 1;}else{}}
-			for ($x=1; $x<=20; $x++){If($b[$x]==1){$cb = $cb + 1;}else{}}
-			for ($x=1; $x<=25; $x++){If($c[$x]==1){$cc = $cc + 1;}else{}}
+			for ($x=1; $x<=25; $x++){If($b[$x]==1){$cb = $cb + 1;}else{}}
+			for ($x=1; $x<=30; $x++){If($c[$x]==1){$cc = $cc + 1;}else{}}
 			for ($x=1; $x<=5; $x++){If($d[$x]==1){$cd = $cd + 1;}else{}}?>
 
 	<!-- calculo las fechas finales -->
@@ -120,7 +125,7 @@
 	<center>
 		<table>			
 			<td><td> | </td>
-				<td></td><td><button form="form1"><img src="/cerexserver/backend/admin/img/save4.jpg" width="24" height="24"/></button></td>
+				<td></td><td><button form="form1"><img src="/cerexserver/backend/admin/img/save4.jpg" width="18" height="18"/></button></td>
 				<td></td><td> | </td>					
 			</td> 
 		</table>
@@ -155,6 +160,11 @@
 					<td><strong>18</strong></td>
 					<td><strong>19</strong></td>
 					<td><strong>20</strong></td>
+					<td><strong>21</strong></td>
+					<td><strong>22</strong></td>
+					<td><strong>23</strong></td>
+					<td><strong>24</strong></td>
+					<td><strong>25</strong></td>					
 					<td align=center><strong>Inicio</strong></td>
 					<td align=center><strong>Fin</strong></td>
 				</tr>	
@@ -169,13 +179,13 @@
 					  <td><input type="checkbox" name="a5" value=""<?php if ($a[5]==1){echo"checked";}else{}?>></td>
 					  <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 					  <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					  <td></td>
+					  <td></td><td></td><td></td><td></td><td></td><td></td>
 					  <td align=center><input type='date' name='ainicio_new' value<?php echo'= '.$ainicio.' ';?>></td>
 					  <td><?=$afinal?></td>
 
 					  <tr></tr>
 					  <td align=left>Trasplante (16-20)</td>
-					  <td align=left>plantas con 6a8 hojas</td>
+					  <td align=left>plantas con 6-8 hojas</td>
 					  <td><input type="checkbox" name="b1" value="1"<?php if ($b[1]==1){echo"checked";}else{}?>></td>
 					  <td><input type="checkbox" name="b2" value="1"<?php if ($b[2]==1){echo"checked";}else{}?>></td>
 					  <td><input type="checkbox" name="b3" value="1"<?php if ($b[3]==1){echo"checked";}else{}?>></td>
@@ -196,6 +206,11 @@
 					  <td><input type="checkbox" name="b18" value="1"<?php if ($b[18]==1){echo"checked";}else{}?>></td>
 					  <td><input type="checkbox" name="b19" value="1"<?php if ($b[19]==1){echo"checked";}else{}?>></td>
 					  <td><input type="checkbox" name="b20" value="1"<?php if ($b[20]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b21" value="1"<?php if ($b[21]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b22" value="1"<?php if ($b[22]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b23" value="1"<?php if ($b[23]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b24" value="1"<?php if ($b[24]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="b25" value="1"<?php if ($b[25]==1){echo"checked";}else{}?>></td>
   					  <td align=center><input type='date' name='binicio_new' value<?php echo'= '.$binicio.' ';?>></td>
 				</tr>
 			</table>
@@ -232,6 +247,11 @@
 					<td><strong>23</strong></td>
 					<td><strong>24</strong></td>
 					<td><strong>25</strong></td>
+					<td><strong>26</strong></td>
+					<td><strong>27</strong></td>
+					<td><strong>28</strong></td>
+					<td><strong>29</strong></td>
+					<td><strong>30</strong></td>					
 					<td align=center><strong>Inicio</strong></td>
 					<td align=center><strong>Fin</strong></td>
 				</tr>
@@ -258,11 +278,17 @@
 					  <td><input type="checkbox" name="c18" value="1"<?php if ($c[18]==1){echo"checked";}else{}?>></td>
 					  <td><input type="checkbox" name="c19" value="1"<?php if ($c[19]==1){echo"checked";}else{}?>></td>
 					  <td><input type="checkbox" name="c20" value="1"<?php if ($c[20]==1){echo"checked";}else{}?>></td>
-					  <td><input type="checkbox" name="c21" value="1"<?php if ($c[16]==1){echo"checked";}else{}?>></td>
-					  <td><input type="checkbox" name="c22" value="1"<?php if ($c[17]==1){echo"checked";}else{}?>></td>
-					  <td><input type="checkbox" name="c23" value="1"<?php if ($c[18]==1){echo"checked";}else{}?>></td>
-					  <td><input type="checkbox" name="c24" value="1"<?php if ($c[19]==1){echo"checked";}else{}?>></td>
-					  <td><input type="checkbox" name="c25" value="1"<?php if ($c[20]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c21" value="1"<?php if ($c[21]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c22" value="1"<?php if ($c[22]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c23" value="1"<?php if ($c[23]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c24" value="1"<?php if ($c[24]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c25" value="1"<?php if ($c[25]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c26" value="1"<?php if ($c[26]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c27" value="1"<?php if ($c[27]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c28" value="1"<?php if ($c[28]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c29" value="1"<?php if ($c[29]==1){echo"checked";}else{}?>></td>
+					  <td><input type="checkbox" name="c30" value="1"<?php if ($c[30]==1){echo"checked";}else{}?>></td>
+
 					  <td align=center><input type='date' name='cinicio_new' value<?php echo'= '.$cinicio.' ';?>></td>
 					  <tr></tr>
 					  <td align=left>Cosecha (5)</td>
@@ -275,6 +301,7 @@
 					  <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 					  <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 					  <td></td><td></td><td></td><td></td><td></td><td></td>
+					  <td></td><td></td><td></td><td></td><td></td>
   					  <td align=center><input type='date' name='dinicio_new' value<?php echo'= '.$dinicio.' ';?>></td>
 					</form>
 				</tr>

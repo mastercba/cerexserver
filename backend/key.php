@@ -18,6 +18,7 @@
     // Everything below this point in the file is secured by the login system     
 
 //Inicia variables
+    date_default_timezone_set("America/New_York");
     $_SESSION['otrosuma'] = 0;
     $_SESSION['ventasuma'] = 0;
     $_SESSION['luzsuma'] = 0;
@@ -26,6 +27,9 @@
     $_SESSION['nutristock'] = 0;
     $_SESSION['otrostock'] = 0;
     $_SESSION['current_account'] = 10;
+    $_SESSION['moduloxDefecto'] = 'M1'; 
+    $_SESSION['ph_show_leido'] = 0;
+    $_SESSION['tds_show_leido'] = 0;
 
     //    $id = mysql_query("SELECT id FROM students ORDER BY id DESC LIMIT 1");
     //    $id = mysql_fetch_array($id);
